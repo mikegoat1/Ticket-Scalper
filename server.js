@@ -37,3 +37,22 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
+
+fetch("https://ticketmasterstefan-skliarovv1.p.rapidapi.com/getSingleGenre", {
+	"method": "POST",
+	"headers": {
+		"content-type": "application/x-www-form-urlencoded",
+		"x-rapidapi-key": "a905819813mshb487c4aa03c8e57p1f0687jsnfe693ad390a5",
+		"x-rapidapi-host": "Ticketmasterstefan-skliarovV1.p.rapidapi.com"
+	},
+	"body": {
+		"genreId": "KnvZfZ7vAde",
+		"apiKey": "y7jtPwcsLI955aEToVqLFC7r53xG1Umr"
+	}
+})
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
