@@ -14,22 +14,34 @@ Event.init(
     venue: {
       type: DataTypes.STRING,
       allowNull: false,
+    // },
+    // segment: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    // genre: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    // subGenre: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
     },
-    segment: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    price_range_min: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
-    genre: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    price_range_max: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
     },
-    subGenre: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    }
-    price_range: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    start_date: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+     start_time: {
+        type: DataTypes.DATE,
+        allowNull: false,
     },
   },
   {
