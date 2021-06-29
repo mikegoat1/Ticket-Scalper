@@ -26,7 +26,7 @@ Event.init(
     subGenre: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
     price_range: {
       type: DataTypes.STRING,
       allowNull: false,
