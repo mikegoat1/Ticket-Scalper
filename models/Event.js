@@ -35,6 +35,7 @@ Event.init(
         type: DataTypes.INTEGER,
         allowNull: true,
     },
+
     start_date: {
         type: DataTypes.STRING,
         allowNull: false,

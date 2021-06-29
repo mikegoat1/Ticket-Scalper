@@ -10,23 +10,23 @@ function properFormat(data) {
 }
 
 
-async function searchBar(data) {
-    try{
-    const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=${properFormat(data)}}&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        }, 
-    });
-    if (response.ok) {
-        console.log(response);
-    } else {
-        alert("Nothing to search");
-    }
-    return response;
+async function generateInfo(data) {
+    try {
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=15&keyword=${properFormat(data)}}&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (response.ok) {
+            console.log(response);
+        } else {
+            alert("Nothing to search");
+        }
+        return response;
     } catch (err) {
-        console.log(err); 
-        res.status(500).json(err); 
+        console.log(err);
+        res.status(500).json(err);
     }
 };
 
