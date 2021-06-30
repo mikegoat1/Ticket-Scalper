@@ -1,24 +1,20 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+const { Event, User } = require('../models');
+const withAuth = require('../utils/auth');
 
-// GET all galleries for homepage
+// GET all info from ticketmaster
 router.get('/', async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findAll({
-      include: [
-        {
-          model: Painting,
-          attributes: ['filename', 'description'],
-        },
-      ],
+    const eventData = await Event.findAll({
+      include: [{model: Event,},],
     });
 
-    const galleries = dbGalleryData.map((gallery) =>
-      gallery.get({ plain: true })
+    const events = eventData.map((event) =>
+      event.get({ plain: true })
     );
 
     res.render('homepage', {
-      galleries,
+      events,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -27,31 +23,33 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one gallery
-router.get('/gallery/:id', async (req, res) => {
+// GET one event
+router.get('/event/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
   } else {
     // If the user is logged in, allow them to view the gallery
     try {
-      const dbGalleryData = await Gallery.findByPk(req.params.id, {
+      const eventData = await Gallery.findByPk(req.params.id, {
         include: [
           {
-            model: Painting,
+            model: Event,
+            // Set the attributes for the info you want to display
             attributes: [
               'id',
-              'title',
-              'artist',
-              'exhibition_date',
-              'filename',
-              'description',
+              'venue',
+              'price_range_min',
+              'price_range_max',
+              'start_date',
+              'start_time',
             ],
           },
         ],
       });
-      const gallery = dbGalleryData.get({ plain: true });
-      res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+      const events = eventData.get({ plain: true });
+      console.log(events); 
+      res.render('detailResult', { events, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -59,23 +57,23 @@ router.get('/gallery/:id', async (req, res) => {
   }
 });
 
-// GET one painting
-router.get('/painting/:id', async (req, res) => {
-  // If the user is not logged in, redirect the user to the login page
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-  } else {
-    // If the user is logged in, allow them to view the painting
-    try {
-      const dbPaintingData = await Painting.findByPk(req.params.id);
+// GET profile
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Event }],
+    });
 
-      const painting = dbPaintingData.get({ plain: true });
+    const user = userData.get({ plain: true });
 
-      res.render('painting', { painting, loggedIn: req.session.loggedIn });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
+    res.render('profile', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

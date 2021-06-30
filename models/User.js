@@ -17,6 +17,7 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    // Maybe able to take Username off only need one for login
     username: {
       type: DataTypes.STRING,
       allowNull: false,
