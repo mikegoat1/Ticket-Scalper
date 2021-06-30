@@ -63,7 +63,7 @@ async function generateSports() {
         if (response.ok) {
             console.log(response);
             const data = await response.json();
-            // postSportsValues(data);
+            postSportsValues(data);
             console.log(data);
             
 
@@ -80,16 +80,16 @@ async function generateSports() {
 
 async function postSportsValues(data) {
 console.log("Im Here")
-                // const venue = data._embedded.venues[0]
-                // const price_range_min = data.priceRanges[0].min.value
-                // const price_range_max = data.priceRanges[0].max.value
-                // const start_date = data.dates.start.localDate.value
-                // const start_time = data.dates.start.localTime.value
-            const venue = "The Forum"
-            const price_range_min = 150
-            const price_range_max = 540
-            const start_date = 	"2021-06-30"
-            const start_time = 	"2021-07-01T01:00:00Z"
+            const venue = data._embedded.venues[0]
+            const price_range_min = data.priceRanges[0].min.value
+            const price_range_max = data.priceRanges[0].max.value
+            const start_date = data.dates.start.localDate.value
+            const start_time = data.dates.start.localTime.value
+            // const venue = "The Forum"
+            // const price_range_min = 150
+            // const price_range_max = 540
+            // const start_date = 	"2021-06-30"
+            // const start_time = 	"2021-07-01T01:00:00Z"
         const postResponse = await fetch(`/event`, {
             method: "POST",
             body: JSON.stringify({
@@ -123,27 +123,29 @@ async function generateMusic() {
         });
         if (response.ok) {
             const data = await response.json()
-            //parseing route test 
-            console.log(data._embedded);
+             //parseing route test 
+             console.log(data._embedded);
 
-            //First image
-            const image1 = data._embedded.events[0].images[2].url; 
-            musicImage1.setAttribute("src", image1);
-            //Second Image 
-            const image2 = data._embedded.events[1].images[2].url;
-            musicImage2.setAttribute("src", image2);
-            //Third Image
-            const image3 = data._embedded.events[2].images[1].url;
-            musicImage3.setAttribute("src", image3);
-            //Fourth Image 
-            const image4 = data._embedded.events[3].images[2].url; 
-            musicImage4.setAttribute("src", image4); 
-            //Fifth Image
-            const image5 = data._embedded.events[4].images[2].url; 
-            musicImage5.setAttribute("src", image5); 
-            //Sixth Image 
-            const image6 = data._embedded.events[5].images[2].url;
-            musicImage6.setAttribute("src", image6);
+             //First image
+             const image1 = data._embedded.events[0].images[2].url; 
+             musicImage1.setAttribute("src", image1);
+             //Second Image 
+             const image2 = data._embedded.events[1].images[2].url;
+             musicImage2.setAttribute("src", image2);
+             //Third Image
+             const image3 = data._embedded.events[2].images[1].url;
+             musicImage3.setAttribute("src", image3);
+             //Fourth Image 
+             const image4 = data._embedded.events[3].images[2].url; 
+             musicImage4.setAttribute("src", image4); 
+             //Fifth Image
+             const image5 = data._embedded.events[4].images[2].url; 
+             musicImage5.setAttribute("src", image5); 
+             //Sixth Image 
+             const image6 = data._embedded.events[5].images[2].url;
+             musicImage6.setAttribute("src", image6);
+ 
+
 
 
         } else {
