@@ -6,12 +6,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const eventData = await Event.findAll({
-      include: [
-        {
-          model: Painting,
-          attributes: ['filename', 'description'],
-        },
-      ],
+      include: [{model: Event,},],
     });
 
     const events = eventData.map((event) =>
@@ -28,18 +23,19 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one gallery
-router.get('/gallery/:id', async (req, res) => {
+// GET one event
+router.get('/event/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
   } else {
     // If the user is logged in, allow them to view the gallery
     try {
-      const dbGalleryData = await Gallery.findByPk(req.params.id, {
+      const eventData = await Gallery.findByPk(req.params.id, {
         include: [
           {
-            model: Painting,
+            model: Event,
+            // Set the attributes for the info you want to display
             attributes: [
               'id',
               'title',
@@ -51,8 +47,9 @@ router.get('/gallery/:id', async (req, res) => {
           },
         ],
       });
-      const gallery = dbGalleryData.get({ plain: true });
-      res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+      const events = eventData.get({ plain: true });
+      console.log(events); 
+      res.render('results', { events, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -60,19 +57,19 @@ router.get('/gallery/:id', async (req, res) => {
   }
 });
 
-// GET one painting
-router.get('/painting/:id', async (req, res) => {
+// GET profile
+router.get('/profile',withAuth, async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
   } else {
     // If the user is logged in, allow them to view the painting
     try {
-      const dbPaintingData = await Painting.findByPk(req.params.id);
+      const userData = await User.findByPk(req.session.user_id);
 
-      const painting = dbPaintingData.get({ plain: true });
+      const userEvents = userData.get({ plain: true });
 
-      res.render('painting', { painting, loggedIn: req.session.loggedIn });
+      res.render('profile', { userEvents, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);

@@ -38,8 +38,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#"><img
                             src="https://fontmeme.com/permalink/210628/942350010c4efe2028f22e167965a0c2.png"
-                            alt="sin-city-font" border="0"></a></a>
-                </li>
+                            alt="sin-city-font" border="0"></a>
 
                 {{#if logged_in}}
                 {{!-- Make a logout li, a tag with the same font --}}
@@ -48,13 +47,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"><img
                             src="https://fontmeme.com/permalink/210628/cd9db6503d0fbda57c8592e9238096b4.png"
-                            alt="sin-city-font" border="0"></a></a>
+                            alt="sin-city-font" border="0"></a>
                 </li>
                 {{/if}}
             </ul>
         </div>
     </nav>
 
+    {{{ body }}}
+
+
+    {{!-- This will go to the Results page --}}
     <!--Search Bar-->
     <div class="container">
         <nav class="navbar navbar-light bg-light">
@@ -69,7 +72,7 @@
     </div>
 
 
-
+    {{!-- All the rows are added to results page --}}
     <main>
         <!--Row 1-->
         <h3>Events</h3>
