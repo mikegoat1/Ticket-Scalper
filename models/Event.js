@@ -14,18 +14,6 @@ Event.init(
     venue: {
       type: DataTypes.STRING,
       allowNull: false,
-    // },
-    // segment: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
-    // genre: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
-    // subGenre: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
     },
     price_range_min: {
       type: DataTypes.INTEGER,
@@ -47,6 +35,7 @@ Event.init(
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'event',
