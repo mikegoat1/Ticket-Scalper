@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+const { Event, User } = require('../models');
+const withAuth = require('../utils/auth');
 
-// GET all galleries for homepage
+// GET all info from ticketmaster
 router.get('/', async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findAll({
+    const eventData = await Event.findAll({
       include: [
         {
           model: Painting,
@@ -13,12 +14,12 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    const galleries = dbGalleryData.map((gallery) =>
-      gallery.get({ plain: true })
+    const events = eventData.map((event) =>
+      event.get({ plain: true })
     );
 
     res.render('homepage', {
-      galleries,
+      events,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
