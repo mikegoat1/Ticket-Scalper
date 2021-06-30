@@ -10,7 +10,7 @@ function properFormat(data) {
 }
 
 
-async function generateInfo(data) {
+async function searchBar(data) {
     try {
         const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=15&keyword=${properFormat(data)}}&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "GET",
@@ -29,6 +29,72 @@ async function generateInfo(data) {
         res.status(500).json(err);
     }
 };
+
+function printResults(){
+async function generateSports(data) {
+    try {
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=sports&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (response.ok) {
+            console.log(response);
+        } else {
+            alert("Nothing to search");
+        }
+        return response;
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+};
+
+}
+
+
+
+async function generateMusic(data) {
+    try {
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=music&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (response.ok) {
+            console.log(response);
+        } else {
+            alert("Nothing to search");
+        }
+        return response;
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+};
+
+async function generateArts(data) {
+    try {
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=arts&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (response.ok) {
+            console.log(response);
+        } else {
+            alert("Nothing to search");
+        }
+        return response;
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+};
+
 
   // fetch("https://ticketmasterstefan-skliarovv1.p.rapidapi.com/getSingleGenre", {
   // 	"method": "GET",
