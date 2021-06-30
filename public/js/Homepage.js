@@ -1,3 +1,19 @@
+//Variables from the the homepage. 
+
+//All of music variables 
+let musicContainer = document.querySelector("#music"); 
+let musicImage1 = document.querySelector("#music1"); 
+let musicImage2 = document.querySelector("#music2"); 
+let musicImage3 = document.querySelector("#music4"); 
+let musicImage4 = document.querySelector("#music4"); 
+let musicImage5 = document.querySelector("#music5"); 
+let musicImage6 = document.querySelector("#music6"); 
+
+
+
+
+
+
 // Formating the search
 function properFormat(data) {
     if (data.indexOf(" ") > 0) {
@@ -9,7 +25,7 @@ function properFormat(data) {
     }
 }
 
-
+// Create an Event Listener for the search bar
 async function searchBar(data) {
     try {
         const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=15&keyword=${properFormat(data)}}&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
@@ -32,6 +48,7 @@ async function searchBar(data) {
 
 function printResults(){
 async function generateSports(data) {
+
     try {
         const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=sports&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "GET",
@@ -40,21 +57,23 @@ async function generateSports(data) {
             },
         });
 
+
+
         if (response.ok) {
             console.log(response);
+
         } else {
             alert("Nothing to search");
         }
         return response;
+
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 
 };
-
-}
-
+  
 async function postSportsValues() {
 
         const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=sports&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
