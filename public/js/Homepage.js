@@ -62,7 +62,7 @@ async function generateSports(data) {
 
         if (response.ok) {
             console.log(response);
-
+            postSportsValues(response);
             
 
         } else {
@@ -75,7 +75,7 @@ async function generateSports(data) {
     }
 
 };
-  
+
 async function postSportsValues(data) {
         for (var i = 0; i < data.events.length; i++){
                 const embeddedValues = data._embedded
@@ -97,12 +97,13 @@ async function postSportsValues(data) {
         })
         if (postResponse.ok) {
             document.location.replace(`/`);
+
           } else {
             alert('Failed to edit dish');
           }
         }
 }
-postSportsValues()
+
     
 generateMusic()
 async function generateMusic() {
