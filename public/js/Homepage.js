@@ -75,8 +75,13 @@ async function generateSports(data) {
 
 };
   
-async function postSportsValues() {
-
+async function postSportsValues(data) {
+    for (var i = 0; i < data.events.length; i++){
+        const eventsValues = data.events[i]
+        const price_range_min = eventsValues.priceRanges[0].min.value
+        const price_range_min = eventsValues.priceRanges[0].max.value
+        const start_date = eventsValues.dates.start.localDate.value
+        const start_time = eventsValues.dates.start.localTime.value
         const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nE&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "POST",
             body: JSON.stringify({
@@ -94,6 +99,7 @@ async function postSportsValues() {
             alert('Failed to edit dish');
           }
         }
+}
     
 
 
@@ -118,7 +124,12 @@ async function generateMusic(data) {
     }
 };
 async function postMusicValues() {
-
+    for (var i = 0; i < data.events.length; i++){
+        const eventsValues = data.events[i]
+        const price_range_min = eventsValues.priceRanges[0].min.value
+        const price_range_min = eventsValues.priceRanges[0].max.value
+        const start_date = eventsValues.dates.start.localDate.value
+        const start_time = eventsValues.dates.start.localTime.value
     const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nJ&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
         method: "POST",
         body: JSON.stringify({
@@ -136,6 +147,7 @@ async function postMusicValues() {
         alert('Failed to edit dish');
       }
     }
+}
 
 
 async function generateArts(data) {
@@ -158,7 +170,12 @@ async function generateArts(data) {
     }
 };
 async function postArtsValues() {
-
+    for (var i = 0; i < data.events.length; i++){
+        const eventsValues = data.events[i]
+        const price_range_min = eventsValues.priceRanges[0].min.value
+        const price_range_min = eventsValues.priceRanges[0].max.value
+        const start_date = eventsValues.dates.start.localDate.value
+        const start_time = eventsValues.dates.start.localTime.value
     const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
         method: "POST",
         body: JSON.stringify({
@@ -176,5 +193,7 @@ async function postArtsValues() {
         alert('Failed to edit dish');
       }
     }
+
+}
 
 
