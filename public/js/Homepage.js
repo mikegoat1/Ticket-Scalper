@@ -63,11 +63,12 @@ async function generateSports(data) {
         if (response.ok) {
             console.log(response);
 
+            
+
         } else {
             alert("Nothing to search");
         }
         return response;
-
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -76,13 +77,14 @@ async function generateSports(data) {
 };
   
 async function postSportsValues(data) {
-    for (var i = 0; i < data.events.length; i++){
-        const eventsValues = data.events[i]
-        const price_range_min = eventsValues.priceRanges[0].min.value
-        const price_range_min = eventsValues.priceRanges[0].max.value
-        const start_date = eventsValues.dates.start.localDate.value
-        const start_time = eventsValues.dates.start.localTime.value
-        const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nE&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        for (var i = 0; i < data.events.length; i++){
+                const embeddedValues = data._embedded
+                const venue = data._embedded.venue[i]
+                const price_range_min = embeddedValues.priceRanges[0].min.value
+                const price_range_max = embeddedValues.priceRanges[0].max.value
+                const start_date = embeddedValues.dates.start.localDate.value
+                const start_time = embeddedValues.dates.start.localTime.value
+        const postResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nE&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "POST",
             body: JSON.stringify({
                 venue,
@@ -100,20 +102,23 @@ async function postSportsValues(data) {
           }
         }
 }
+postSportsValues()
     
-
-
-
-async function generateMusic(data) {
+generateMusic()
+async function generateMusic() {
     try {
-        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nJ&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nJ&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             },
         });
         if (response.ok) {
-            console.log(response);
+            const data = await response.json()
+            console.log(data._embedded.events[0]);
+
+
+
         } else {
             alert("Nothing to search");
         }
@@ -125,12 +130,13 @@ async function generateMusic(data) {
 };
 async function postMusicValues() {
     for (var i = 0; i < data.events.length; i++){
-        const eventsValues = data.events[i]
-        const price_range_min = eventsValues.priceRanges[0].min.value
-        const price_range_min = eventsValues.priceRanges[0].max.value
-        const start_date = eventsValues.dates.start.localDate.value
-        const start_time = eventsValues.dates.start.localTime.value
-    const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nJ&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        const embeddedValues = data._embedded
+        const venue = data._embedded.venue[i]
+        const price_range_min = embeddedValues.priceRanges[0].min.value
+        const price_range_max = embeddedValues.priceRanges[0].max.value
+        const start_date = embeddedValues.dates.start.localDate.value
+        const start_time = embeddedValues.dates.start.localTime.value
+    const postResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nJ&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
         method: "POST",
         body: JSON.stringify({
             venue,
@@ -147,12 +153,12 @@ async function postMusicValues() {
         alert('Failed to edit dish');
       }
     }
-}
 
+}
 
 async function generateArts(data) {
     try {
-        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -171,12 +177,13 @@ async function generateArts(data) {
 };
 async function postArtsValues() {
     for (var i = 0; i < data.events.length; i++){
-        const eventsValues = data.events[i]
-        const price_range_min = eventsValues.priceRanges[0].min.value
-        const price_range_min = eventsValues.priceRanges[0].max.value
-        const start_date = eventsValues.dates.start.localDate.value
-        const start_time = eventsValues.dates.start.localTime.value
-    const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        const embeddedValues = data._embedded
+        const venue = data._embedded.venue[i]
+        const price_range_min = embeddedValues.priceRanges[0].min.value
+        const price_range_max = embeddedValues.priceRanges[0].max.value
+        const start_date = embeddedValues.dates.start.localDate.value
+        const start_time = embeddedValues.dates.start.localTime.value
+    const postResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
         method: "POST",
         body: JSON.stringify({
             venue,
@@ -193,30 +200,7 @@ async function postArtsValues() {
         alert('Failed to edit dish');
       }
     }
-
 }
 
 
-// async function postArtsVenueValue(data) {
-//     for (var i = 0; i < data.venue.length; i++){
-//         const vanue = data.venue[i].value
-        
-//     const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
-//         method: "POST",
-//         body: JSON.stringify({
-//             venue,
-//             price_range_min,
-//             price_range_max,
-//             start_date,
-//             start_time,
 
-//         }),
-//     })
-//     if (postResponse.ok) {
-//         document.location.replace(`/`);
-//       } else {
-//         alert('Failed to edit dish');
-//       }
-//     }
-
-// }
