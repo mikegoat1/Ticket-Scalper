@@ -46,11 +46,12 @@ async function searchBar(data) {
     }
 };
 
-function printResults(){
+
+
 async function generateSports(data) {
 
     try {
-        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=sports&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nE&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -76,7 +77,7 @@ async function generateSports(data) {
   
 async function postSportsValues() {
 
-        const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=sports&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nE&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "POST",
             body: JSON.stringify({
                 venue,
@@ -87,19 +88,19 @@ async function postSportsValues() {
 
             }),
         })
-        if (response.ok) {
+        if (postResponse.ok) {
             document.location.replace(`/`);
           } else {
             alert('Failed to edit dish');
           }
         }
-    }
+    
 
 
 
 async function generateMusic(data) {
     try {
-        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=music&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nJ&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -116,10 +117,30 @@ async function generateMusic(data) {
         res.status(500).json(err);
     }
 };
+async function postMusicValues() {
+
+    const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nJ&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        method: "POST",
+        body: JSON.stringify({
+            venue,
+            price_range_min,
+            price_range_max,
+            start_date,
+            start_time,
+
+        }),
+    })
+    if (postResponse.ok) {
+        document.location.replace(`/`);
+      } else {
+        alert('Failed to edit dish');
+      }
+    }
+
 
 async function generateArts(data) {
     try {
-        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=arts&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -136,4 +157,24 @@ async function generateArts(data) {
         res.status(500).json(err);
     }
 };
+async function postArtsValues() {
+
+    const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+        method: "POST",
+        body: JSON.stringify({
+            venue,
+            price_range_min,
+            price_range_max,
+            start_date,
+            start_time,
+
+        }),
+    })
+    if (postResponse.ok) {
+        document.location.replace(`/`);
+      } else {
+        alert('Failed to edit dish');
+      }
+    }
+
 
