@@ -120,7 +120,18 @@ async function generateMusic() {
             //Second Image 
             const image2 = data._embedded.events[1].images[2].url;
             musicImage2.setAttribute("src", image2);
-
+            //Third Image
+            const image3 = data._embedded.events[2].images[1].url;
+            musicImage3.setAttribute("src", image3);
+            //Fourth Image 
+            const image4 = data._embedded.events[3].images[2].url; 
+            musicImage4.setAttribute("src", image4); 
+            //Fifth Image
+            const image5 = data._embedded.events[4].images[2].url; 
+            musicImage5.setAttribute("src", image5); 
+            //Sixth Image 
+            const image6 = data._embedded.events[5].images[2].url;
+            musicImage6.setAttribute("src", image6);
 
 
         } else {
