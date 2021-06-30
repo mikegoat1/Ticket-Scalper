@@ -111,7 +111,15 @@ async function generateMusic() {
         });
         if (response.ok) {
             const data = await response.json()
-            console.log(data._embedded.events[0]);
+            //parseing route test 
+            console.log(data._embedded);
+
+            //First image
+            const image1 = data._embedded.events[0].images[2].url; 
+            musicImage1.setAttribute("src", image1);
+            //Second Image 
+            const image2 = data._embedded.events[1].images[2].url;
+            musicImage2.setAttribute("src", image2);
 
 
 
