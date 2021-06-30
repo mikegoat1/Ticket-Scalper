@@ -93,7 +93,7 @@ async function postSportsValues() {
             alert('Failed to edit dish');
           }
         }
-    
+    }
 
 
 
@@ -137,17 +137,3 @@ async function generateArts(data) {
     }
 };
 
-
-  // fetch("https://ticketmasterstefan-skliarovv1.p.rapidapi.com/getSingleGenre", {
-  // 	"method": "GET",
-  // 	"body": {
-  // 		"genreId": "KnvZfZ7vAde",
-  // 		"apiKey": "y7jtPwcsLI955aEToVqLFC7r53xG1Umr"
-  // 	}
-  // })
-  // .then(response => {
-  // 	console.log(response);
-  // })
-  // .catch(err => {
-  // 	console.error(err);
-  // });
