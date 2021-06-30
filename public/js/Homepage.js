@@ -46,8 +46,13 @@ async function searchBar(data) {
     }
 };
 
+<<<<<<< HEAD
 //Auto generate all the images in the homepage
 async function generateSports() {
+=======
+function printResults(){
+async function generateSports(req, res) {
+>>>>>>> 19723851c9ea561b42684b030bee1f2a5f38d276
     try {
         const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=sports&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
             method: "GET",
@@ -55,7 +60,21 @@ async function generateSports() {
                 "Content-Type": "application/json",
             },
         });
+<<<<<<< HEAD
 
+=======
+        const postResponse = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?size=10&keyword=sports&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+            method: "POST",
+            body: JSON.stringify{
+                venue: 
+                price_range_min:
+                price_range_max:
+                start_date:
+                start_time:
+
+            }
+        })
+>>>>>>> 19723851c9ea561b42684b030bee1f2a5f38d276
         if (response.ok) {
             console.log(response);
 
