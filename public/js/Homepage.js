@@ -105,7 +105,7 @@ async function postSportsValues(data) {
         const start_time = 	data._embedded.events[1].dates.start.localTime
         const ticket_link = data._embedded.events[1].url
 
-        const postResponse = await fetch(`/event`, {
+        const postResponse = await fetch(`/api/event`, {
             method: "POST",
             body: JSON.stringify({
                 venue,
