@@ -29,7 +29,7 @@ router.get('/event/:id', async (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect('/login');
   } else {
-    // If the user is logged in, allow them to view the gallery
+    // If the user is logged in, allow them to view the event
     try {
       const eventData = await Event.findByPk(req.params.id, {
         include: [
