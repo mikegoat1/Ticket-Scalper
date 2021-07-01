@@ -122,7 +122,7 @@ async function postSportsValues(data) {
             
             console.log(postResponse)
           } else {
-            alert('Failed to edit dish');
+            alert('Error');
           }
         }
 
@@ -194,7 +194,7 @@ async function postMusicValues(data) {
     })
     if (postResponse.ok) {
     } else {
-        alert('Failed to edit dish');
+        alert('Error');
     }
 }
 //Generate Images for the event
@@ -258,6 +258,6 @@ async function postArtsValues(data) {
     })
     if (postResponse.ok) {
     } else {
-        alert('Failed to edit dish');
+        alert('Error');
     }
 }
