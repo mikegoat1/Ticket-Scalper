@@ -32,6 +32,10 @@ Event.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
+      ticket_link: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
   },
   {
     sequelize,
