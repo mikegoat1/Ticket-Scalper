@@ -63,8 +63,8 @@ async function searchBar(data) {
 };
 
 
+// Generates Images for the event
 generateSports()
-
 async function generateSports() {
 
     try {
@@ -94,6 +94,12 @@ async function generateSports() {
             //Fifth Image
             const image5 = data._embedded.events[4].images[2].url; 
             sportsImage5.setAttribute("src", image5); 
+            
+            sportsContainer.addEventListener("click", function(event){
+                console.log(event.target.value); 
+                event.stopPropagation(); 
+
+            } )
 
 
         } else {
@@ -105,7 +111,7 @@ async function generateSports() {
     }
 
 };
-
+//Sends info to the router
 async function postSportsValues(data) {
     console.log("Im Here")
                     // const venue = data._embedded.venues[0]
@@ -139,7 +145,7 @@ async function postSportsValues(data) {
             }
  
             
-    
+// Generate Images for the event
 generateMusic()
 async function generateMusic() {
     try {
@@ -178,6 +184,7 @@ async function generateMusic() {
         console.log(err);
     }
 };
+//Sends info to the router
 async function postMusicValues() {
     for (var i = 0; i < data.events.length; i++){
         const embeddedValues = data._embedded
@@ -206,6 +213,7 @@ async function postMusicValues() {
  
 }
 
+//Generate Images for the event
 generateArts(); 
 async function generateArts(data) {
     try {
@@ -243,6 +251,7 @@ async function generateArts(data) {
         console.log(err);
     }
 };
+//Sends info to the router
 async function postArtsValues() {
     for (var i = 0; i < data.events.length; i++){
         const embeddedValues = data._embedded
