@@ -30,6 +30,12 @@ Event.init(
     },
      start_time: {
         type: DataTypes.STRING,
+
+        allowNull: false,
+    },
+      ticket_link: {
+        type: DataTypes.STRING,
+
         allowNull: false,
     },
   },
