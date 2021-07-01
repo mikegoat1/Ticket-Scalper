@@ -31,7 +31,7 @@ router.get('/event/:id', async (req, res) => {
   } else {
     // If the user is logged in, allow them to view the gallery
     try {
-      const eventData = await Gallery.findByPk(req.params.id, {
+      const eventData = await Event.findByPk(req.params.id, {
         include: [
           {
             model: Event,
@@ -62,6 +62,8 @@ router.post('/event', async (req, res) => {
   try {
     console.log(req.body)
     const eventData = await Event.create(req.body);
+      
+
     res.status(200).json(eventData);
   } catch (err) {
     res.status(400).json(err);
