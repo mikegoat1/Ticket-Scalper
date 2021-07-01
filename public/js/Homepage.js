@@ -63,8 +63,8 @@ async function searchBar(data) {
 };
 
 
+// Generates Images for the event
 generateSports()
-
 async function generateSports() {
 
     try {
@@ -94,6 +94,12 @@ async function generateSports() {
             //Fifth Image
             const image5 = data._embedded.events[4].images[2].url; 
             sportsImage5.setAttribute("src", image5); 
+            
+            sportsContainer.addEventListener("click", function(event){
+                console.log(event.target.value); 
+                event.stopPropagation(); 
+
+            } )
 
 
         } else {
@@ -105,7 +111,7 @@ async function generateSports() {
     }
 
 };
-
+//Sends info to the router
 async function postSportsValues(data) {
 
 console.log(data._embedded.events[0]._embedded.venues[0].name)
@@ -137,7 +143,7 @@ console.log(data._embedded.events[0]._embedded.venues[0].name)
         }
 
             
-    
+// Generate Images for the event
 generateMusic()
 async function generateMusic() {
     try {
@@ -184,6 +190,7 @@ async function generateMusic() {
         console.log(err);
     }
 };
+
 async function postMusicValues(data) {
     console.log(data._embedded.events[0]._embedded.venues[0].name)
         const venue = data._embedded.events[0]._embedded.venues[0].name
@@ -192,6 +199,7 @@ async function postMusicValues(data) {
         const start_date = data._embedded.events[1].dates.start.localDate
         const start_time = data._embedded.events[1].dates.start.localTime
     const postResponse = await fetch(`/event`, {
+
         method: "POST",
         body: JSON.stringify({
             venue,
@@ -211,6 +219,7 @@ async function postMusicValues(data) {
  
 
 
+//Generate Images for the event
 generateArts(); 
 async function generateArts() {
     try {
@@ -250,6 +259,7 @@ async function generateArts() {
         console.log(err);
     }
 };
+
 async function postArtsValues(data) {
     console.log(data._embedded.events[0]._embedded.venues[0].name)
         const venue = data._embedded.events[0]._embedded.venues[0].name
@@ -258,6 +268,7 @@ async function postArtsValues(data) {
         const start_date = data._embedded.events[1].dates.start.localDate
         const start_time = data._embedded.events[1].dates.start.localTime
     const postResponse = await fetch(`/event`, {
+
         method: "POST",
         body: JSON.stringify({
             venue,
