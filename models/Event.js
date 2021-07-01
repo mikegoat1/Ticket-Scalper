@@ -29,7 +29,7 @@ Event.init(
         allowNull: false,
     },
      start_time: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
     },
   },
