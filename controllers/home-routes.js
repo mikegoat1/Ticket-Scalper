@@ -58,7 +58,7 @@ router.get('/event/:id', async (req, res) => {
 });
 
 //POST Event Values
-router.post('/event', async (req, res) => {
+router.post('/sport-event', async (req, res) => {
   try {
     console.log(req.body)
     const eventData = await Event.create(req.body);

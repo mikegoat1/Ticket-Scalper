@@ -209,6 +209,7 @@ async function postMusicValues(data) {
             start_time,
 
         }),
+        headers: { 'Content-Type': 'application/json' },
     })
     if (postResponse.ok) {
         
@@ -278,6 +279,7 @@ async function postArtsValues(data) {
             start_time,
 
         }),
+        headers: { 'Content-Type': 'application/json' },
     })
     if (postResponse.ok) {
         
