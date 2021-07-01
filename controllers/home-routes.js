@@ -6,7 +6,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const eventData = await Event.findAll({
-      
+
     });
 
     const events = eventData.map((event) =>
@@ -52,28 +52,65 @@ router.get('/event/:id', async (req, res) => {
         ...events,
         logged_in: req.session.logged_in
       });
-      } catch (err) {
+    } catch (err) {
       res.status(500).json(err);
-      }
-      };
-    });
+    }
+  };
+});
+//The page loads with this one
+// router.get('/event', async (req, res) => {
+//   // We find all dishes in the db and set the data equal to dishData
+//   const eventData = await Event.findAll().catch((err) => {
+//     res.json(err);
+//   });
+//   // We use map() to iterate over dishData and then add .get({ plain: true }) each object to serialize it. 
+//   const events = eventData.map((event) => event.get({ plain: true }));
+//   // We render the template, 'all', passing in dishes, a new array of serialized objects.
+//   res.render('detailResult', { events });
+// });
 
 
-// POST Event Values
 router.get('/event', async (req, res) => {
   try {
-    console.log(req.body)
-    const eventData = await Event.create({
+    const eventData = await Event.findAll({
       ...req.body,
-      user_id: req.session.user_id,
     });
 
-    res.status(200).json(eventData);
-    console.log(eventData)
+    const events = eventData.map((event) =>
+      event.get({ plain: true })
+    );
+
+    res.render('detailResult', {
+      events,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
+
+
+
+// // get Event Values
+// router.get('/event', async (req, res) => {
+//   try {
+//     console.log(req.body)
+//     const eventData = await Event.findAll({
+//       ...req.body,
+//       user_id: req.session.user_id,
+//     });
+//     const events = eventData.get({ plain: true });
+//     res.render("detailResult", {
+//       ...events,
+//       logged_in: req.session.logged_in
+//     })
+//     res.status(200).json(eventData);
+//     console.log(eventData)
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 
 // GET profile
