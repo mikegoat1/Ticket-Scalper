@@ -119,7 +119,7 @@ async function postSportsValues(data) {
         const price_range_min = parseInt(data._embedded.events[1].priceRanges[0].min)
         const price_range_max = parseInt(data._embedded.events[1].priceRanges[0].max)
         const start_date = data._embedded.events[1].dates.start.localDate
-        const start_time = 	Date.parse(data._embedded.events[1].dates.start.dateTime)
+        const start_time = 	data._embedded.events[1].dates.start.localTime
         
 
         const postResponse = await fetch(`/event`, {
@@ -197,7 +197,7 @@ async function postMusicValues(data) {
         const price_range_min = parseInt(data._embedded.events[1].priceRanges[0].min)
         const price_range_max = parseInt(data._embedded.events[1].priceRanges[0].max)
         const start_date = data._embedded.events[1].dates.start.localDate
-        const start_time = 	Date.parse(data._embedded.events[1].dates.start.dateTime)
+        const start_time = data._embedded.events[1].dates.start.localTime
     const postResponse = await fetch(`/event`, {
 
         method: "POST",
@@ -267,7 +267,7 @@ async function postArtsValues(data) {
         const price_range_min = parseInt(data._embedded.events[1].priceRanges[0].min)
         const price_range_max = parseInt(data._embedded.events[1].priceRanges[0].max)
         const start_date = data._embedded.events[1].dates.start.localDate
-        const start_time = 	Date.parse(data._embedded.events[1].dates.start.dateTime)
+        const start_time = data._embedded.events[1].dates.start.localTime
     const postResponse = await fetch(`/event`, {
 
         method: "POST",
