@@ -77,7 +77,7 @@ async function generateSports() {
         if (response.ok) {
             const data = await response.json();
             postSportsValues(data);
-            console.log(data);
+
 
             //First image
             const image1 = data._embedded.events[0].images[2].url; 
@@ -114,17 +114,13 @@ async function generateSports() {
 //Sends info to the router
 async function postSportsValues(data) {
 
-console.log("Im Here")
-            const venue = data._embedded.venues[0]
-            const price_range_min = data.priceRanges[0].min.value
-            const price_range_max = data.priceRanges[0].max.value
-            const start_date = data.dates.start.localDate.value
-            const start_time = data.dates.start.localTime.value
-            // const venue = "The Forum"
-            // const price_range_min = 150
-            // const price_range_max = 540
-            // const start_date = 	"2021-06-30"
-            // const start_time = 	"2021-07-01T01:00:00Z"
+console.log(data._embedded.events[0]._embedded.venues[0].name)
+        const venue = data._embedded.events[0]._embedded.venues[0].name
+        const price_range_min = data._embedded.events[1].priceRanges[0].min
+        const price_range_max = data._embedded.events[1].priceRanges[0].max
+        const start_date = data._embedded.events[1].dates.start.localDate
+        const start_time = data._embedded.events[1].dates.start.localTime
+
         const postResponse = await fetch(`/event`, {
             method: "POST",
             body: JSON.stringify({
@@ -138,7 +134,8 @@ console.log("Im Here")
             headers: { 'Content-Type': 'application/json' },
         })
         if (postResponse.ok) {
-            document.location.replace(`/`);
+            document.location.replace(`/event`);
+            
 
           } else {
             alert('Failed to edit dish');
@@ -158,6 +155,8 @@ async function generateMusic() {
         });
         if (response.ok) {
             const data = await response.json()
+            postMusicValues(data);
+            console.log(data)
 
              //parseing route test 
              console.log(data._embedded);
@@ -191,16 +190,16 @@ async function generateMusic() {
         console.log(err);
     }
 };
-//Sends info to the router
-async function postMusicValues() {
-    for (var i = 0; i < data.events.length; i++){
-        const embeddedValues = data._embedded
-        const venue = data._embedded.venue[i]
-        const price_range_min = embeddedValues.priceRanges[0].min.value
-        const price_range_max = embeddedValues.priceRanges[0].max.value
-        const start_date = embeddedValues.dates.start.localDate.value
-        const start_time = embeddedValues.dates.start.localTime.value
-    const postResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7nJ&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+
+async function postMusicValues(data) {
+    console.log(data._embedded.events[0]._embedded.venues[0].name)
+        const venue = data._embedded.events[0]._embedded.venues[0].name
+        const price_range_min = data._embedded.events[1].priceRanges[0].min
+        const price_range_max = data._embedded.events[1].priceRanges[0].max
+        const start_date = data._embedded.events[1].dates.start.localDate
+        const start_time = data._embedded.events[1].dates.start.localTime
+    const postResponse = await fetch(`/event`, {
+
         method: "POST",
         body: JSON.stringify({
             venue,
@@ -212,17 +211,17 @@ async function postMusicValues() {
         }),
     })
     if (postResponse.ok) {
-        document.location.replace(`/`);
+        document.location.replace(`/event`);
       } else {
         alert('Failed to edit dish');
       }
     }
  
-}
+
 
 //Generate Images for the event
 generateArts(); 
-async function generateArts(data) {
+async function generateArts() {
     try {
         const response = await fetch(`https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {            
             method: "GET",
@@ -231,7 +230,9 @@ async function generateArts(data) {
             },
         });
         if (response.ok) {
-            const data = await response.json()
+            const data = await response.json();
+            postArtsValues(data);
+            console.log(data)
             //parseing route test 
             console.log(data._embedded);
 
@@ -258,16 +259,16 @@ async function generateArts(data) {
         console.log(err);
     }
 };
-//Sends info to the router
-async function postArtsValues() {
-    for (var i = 0; i < data.events.length; i++){
-        const embeddedValues = data._embedded
-        const venue = data._embedded.venue[i]
-        const price_range_min = embeddedValues.priceRanges[0].min.value
-        const price_range_max = embeddedValues.priceRanges[0].max.value
-        const start_date = embeddedValues.dates.start.localDate.value
-        const start_time = embeddedValues.dates.start.localTime.value
-    const postResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://app.ticketmaster.com/discovery/v2/events.json?size=10&classificationId=KZFzniwnSyZfZ7v7na&apikey=y7jtPwcsLI955aEToVqLFC7r53xG1Umr`, {
+
+async function postArtsValues(data) {
+    console.log(data._embedded.events[0]._embedded.venues[0].name)
+        const venue = data._embedded.events[0]._embedded.venues[0].name
+        const price_range_min = data._embedded.events[1].priceRanges[0].min
+        const price_range_max = data._embedded.events[1].priceRanges[0].max
+        const start_date = data._embedded.events[1].dates.start.localDate
+        const start_time = data._embedded.events[1].dates.start.localTime
+    const postResponse = await fetch(`/event`, {
+
         method: "POST",
         body: JSON.stringify({
             venue,
@@ -279,12 +280,12 @@ async function postArtsValues() {
         }),
     })
     if (postResponse.ok) {
-        document.location.replace(`/`);
+        document.location.replace(`/event`);
       } else {
         alert('Failed to edit dish');
       }
     }
-}
+
 
 
 
