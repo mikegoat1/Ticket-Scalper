@@ -1,23 +1,22 @@
 //Variables from the the homepage. 
 //All of music variables 
-let musicContainer = document.querySelector("#music");
-let musicImage1 = document.querySelector("#music1");
-let musicImage2 = document.querySelector("#music2");
-let musicImage3 = document.querySelector("#music3");
-let musicImage4 = document.querySelector("#music4");
+const musicContainer = document.querySelector("#music");
+const musicImage1 = document.querySelector("#music1");
+const musicImage2 = document.querySelector("#music2");
+const musicImage3 = document.querySelector("#music3");
+const musicImage4 = document.querySelector("#music4");
 //All of Sports 
-let sportsContainer = document.querySelector("#sports");
-let sportsImage1 = document.querySelector("#sports1");
-let sportsImage2 = document.querySelector("#sports2");
-let sportsImage3 = document.querySelector("#sports3");
-let sportsImage4 = document.querySelector("#sports4");
-let sportsImage5 = document.querySelector("#sports5");
+const sportsContainer = document.querySelector("#sports");
+const sportsImage1 = document.querySelector("#sports1");
+const sportsImage2 = document.querySelector("#sports2");
+const sportsImage3 = document.querySelector("#sports3");
+const sportsImage4 = document.querySelector("#sports4");
 //All of Arts
-let artsContainer = document.querySelector("#arts");
-let artsImage1 = document.querySelector("#arts1");
-let artsImage2 = document.querySelector("#arts2");
-let artsImage3 = document.querySelector("#arts3");
-let artsImage4 = document.querySelector("#arts4");
+const artsContainer = document.querySelector("#arts");
+const artsImage1 = document.querySelector("#arts1");
+const artsImage2 = document.querySelector("#arts2");
+const artsImage3 = document.querySelector("#arts3");
+const artsImage4 = document.querySelector("#arts4");
 // Formating the search
 function properFormat(data) {
     if (data.indexOf(" ") > 0) {
@@ -82,9 +81,7 @@ async function generateSports() {
             //Fourth Image 
             const image4 = data._embedded.events[3].images[2].url;
             sportsImage4.setAttribute("src", image4);
-            //Fifth Image
-            const image5 = data._embedded.events[4].images[2].url;
-            sportsImage5.setAttribute("src", image5);
+
 
         } else {
             alert("Nothing to search");
@@ -155,12 +152,7 @@ async function generateMusic() {
             //Fourth Image 
             const image4 = data._embedded.events[3].images[2].url;
             musicImage4.setAttribute("src", image4);
-            //Fifth Image
-            const image5 = data._embedded.events[4].images[2].url;
-            musicImage5.setAttribute("src", image5);
-            //Sixth Image 
-            const image6 = data._embedded.events[5].images[2].url;
-            musicImage6.setAttribute("src", image6);
+
         } else {
             alert("Nothing to search");
         }

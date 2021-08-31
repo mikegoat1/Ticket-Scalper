@@ -20,14 +20,14 @@ Just go to the site hosted on Heroku.
 ## Usage
 
 Finding tickets for events near you.
-
+Deployed at: https://maple-eh-00291.herokuapp.com
 ## Credits
 
 Randon, Chris, Chad, and Mikey J.
 -Credit goes out to (shields.io). Support @ <https://opencollective.com/shields>.
 
 ## Features
-
+<image src="https://maple-eh-00291.herokuapp.com/images/ticket-scalper.png" >
 ## Liscense
 
 This product is license with MIT

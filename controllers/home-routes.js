@@ -5,10 +5,7 @@ const withAuth = require('../utils/auth');
 // GET all info from ticketmaster
 router.get('/', async (req, res) => {
   try {
-    const eventData = await Event.findAll({
-
-    });
-
+    const eventData = await Event.findAll();
     const events = eventData.map((event) =>
       event.get({ plain: true })
     );
@@ -24,7 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET one event
-router.get('/event/:id', async (req, res) => {
+router.get('/detailResult/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
   if (!req.session.loggedIn) {
     res.redirect('/login');
@@ -57,38 +54,27 @@ router.get('/event/:id', async (req, res) => {
     }
   };
 });
-//The page loads with this one
-// router.get('/event', async (req, res) => {
-//   // We find all dishes in the db and set the data equal to dishData
-//   const eventData = await Event.findAll().catch((err) => {
-//     res.json(err);
-//   });
-//   // We use map() to iterate over dishData and then add .get({ plain: true }) each object to serialize it. 
-//   const events = eventData.map((event) => event.get({ plain: true }));
-//   // We render the template, 'all', passing in dishes, a new array of serialized objects.
-//   res.render('detailResult', { events });
+
+
+// router.get('/detailResult', async (req, res) => {
+//   try {
+//     const eventData = await Event.findAll({
+//       ...req.body,
+//     });
+
+//     const events = eventData.map((event) =>
+//       event.get({ plain: true })
+//     );
+
+//     res.render('detailResult', {
+//       events,
+//       loggedIn: req.session.loggedIn,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
 // });
-
-
-router.get('/event', async (req, res) => {
-  try {
-    const eventData = await Event.findAll({
-      ...req.body,
-    });
-
-    const events = eventData.map((event) =>
-      event.get({ plain: true })
-    );
-
-    res.render('detailResult', {
-      events,
-      loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 
 // router.post('/event', async (req, res) => {
 //   try {
