@@ -37,13 +37,6 @@ User.init(
         len: [6],
       },
     },
-  //   zipcode: {
-  //     type: DataTypes.INTEGER,
-  //     allowNull: false,
-  //     validate: {
-  //       len: [5],
-  //   },
-  // },
   },
   {
     hooks: {
