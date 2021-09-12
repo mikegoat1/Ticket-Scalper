@@ -51,7 +51,7 @@ async function searchBar(data) {
 sportsContainer.addEventListener("click", function (event) {
     console.log(event.target.value);
     event.stopPropagation();
-    
+
 
 });
 
@@ -67,14 +67,19 @@ async function generateSports() {
         })
         if (response.ok) {
             const data = await response.json();
+            console.log(data._embedded.events[0])
             postSportsValues(data);
-            console.log(data)
+
             //First image
             const image1 = data._embedded.events[0].images[2].url;
             sportsImage1.setAttribute("src", image1);
+            const sportsCap = document.querySelector("#sports1Cap")
+            sportsCap.innerHTML = data._embedded.events[0].name;
             //Second Image 
             const image2 = data._embedded.events[1].images[2].url;
             sportsImage2.setAttribute("src", image2);
+            const sportsCap2 = document.querySelector("#sports2Cap")
+            sportsCap2.innerHTML = data._embedded.events[1].name;
             //Third Image
             const image3 = data._embedded.events[2].images[3].url;
             sportsImage3.setAttribute("src", image3);
@@ -86,7 +91,7 @@ async function generateSports() {
         } else {
             alert("Nothing to search");
         }
-            return response;
+        return response;
 
     } catch (err) {
         console.log(err);
@@ -95,33 +100,35 @@ async function generateSports() {
 async function postSportsValues(data) {
 
     console.log(data._embedded.events[1].url)
-        const venue = data._embedded.events[1]._embedded.venues[0].name
-        const price_range_min = parseInt(data._embedded.events[1].priceRanges[0].min)
-        const price_range_max = parseInt(data._embedded.events[1].priceRanges[0].max)
-        const start_date = data._embedded.events[1].dates.start.localDate
-        const start_time = 	data._embedded.events[1].dates.start.localTime
-        const ticket_link = data._embedded.events[1].url
+    const venue = data._embedded.events[1]._embedded.venues[0].name
+    const price_range_min = parseInt(data._embedded.events[1].priceRanges[0].min)
+    const price_range_max = parseInt(data._embedded.events[1].priceRanges[0].max)
+    const start_date = data._embedded.events[1].dates.start.localDate
+    const start_time = data._embedded.events[1].dates.start.localTime
+    const ticket_link = data._embedded.events[1].url
 
-        const postResponse = await fetch(`/api/event`, {
-            method: "POST",
-            body: JSON.stringify({
-                venue,
-                price_range_min,
-                price_range_max,
-                start_date,
-                start_time,
-                ticket_link,
+    const postResponse = await fetch("/api/event", {
+        method: "POST",
+        body: JSON.stringify({
+            venue,
+            price_range_min,
+            price_range_max,
+            start_date,
+            start_time,
+            ticket_link,
 
-            }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-        if (postResponse.ok) {
-            
-            console.log(postResponse)
-          } else {
-            alert('Error');
-          }
-        }
+        }),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    console.log(postResponse.error)
+
+    if (postResponse.ok) {
+
+        console.log(postResponse)
+    } else {
+        alert('Error');
+    }
+}
 
 
 // Generate Images for the event
@@ -162,32 +169,35 @@ async function generateMusic() {
     }
 };
 async function postMusicValues(data) {
-    // console.log(typeof data._embedded.events[1].priceRanges[0].min)
+    console.log(data._embedded.events[1]._embedded.venues[0].name)
+    for (let i = 0; i > 5; i++) {
 
-        const venue = data._embedded.events[0]._embedded.venues[0].name
-        const price_range_min = parseInt(data._embedded.events[1].priceRanges[0].min)
-        const price_range_max = parseInt(data._embedded.events[1].priceRanges[0].max)
-        const start_date = data._embedded.events[1].dates.start.localDate
-        const start_time = data._embedded.events[1].dates.start.localTime
-        const ticket_link = data._embedded.events[1].url
 
-    const postResponse = await fetch(`/event`, {
-        method: "POST",
-        body: JSON.stringify({
-            venue,
-            price_range_min,
-            price_range_max,
-            start_date,
-            start_time,
-            ticket_link,
+        const venue = data._embedded.events[i]._embedded.venues[0].name
+        const price_range_min = parseInt(data._embedded.events[i].priceRanges[0].min)
+        const price_range_max = parseInt(data._embedded.events[i].priceRanges[0].max)
+        const start_date = data._embedded.events[i].dates.start.localDate
+        const start_time = data._embedded.events[i].dates.start.localTime
+        const ticket_link = data._embedded.events[i].url
 
-        }),
-        headers: { 'Content-Type': 'application/json' },
-    })
-    if (postResponse.ok) {
-    } else {
-        alert('Error');
+        const postResponse = await fetch("/api/event", {
+            method: "POST",
+            body: JSON.stringify({
+                venue,
+                price_range_min,
+                price_range_max,
+                start_date,
+                start_time,
+                ticket_link,
+
+            }),
+            headers: { 'Content-Type': 'application/json' },
+        })
     }
+    // if (postResponse.ok) {
+    // } else {
+    //     alert('Error');
+    // }
 }
 //Generate Images for the event
 generateArts();
@@ -227,15 +237,14 @@ async function generateArts() {
 };
 async function postArtsValues(data) {
     // console.log(typeof data._embedded.events[1].priceRanges[0].min)
+    const venue = data._embedded.events[0]._embedded.venues[0].name
+    const price_range_min = parseInt(data._embedded.events[1].priceRanges[0].min)
+    const price_range_max = parseInt(data._embedded.events[1].priceRanges[0].max)
+    const start_date = data._embedded.events[1].dates.start.localDate
+    const start_time = data._embedded.events[1].dates.start.localTime
+    const ticket_link = data._embedded.events[1].url
 
-        const venue = data._embedded.events[0]._embedded.venues[0].name
-        const price_range_min = parseInt(data._embedded.events[1].priceRanges[0].min)
-        const price_range_max = parseInt(data._embedded.events[1].priceRanges[0].max)
-        const start_date = data._embedded.events[1].dates.start.localDate
-        const start_time = data._embedded.events[1].dates.start.localTime
-        const ticket_link = data._embedded.events[1].url
-
-    const postResponse = await fetch(`/event`, {
+    const postResponse = await fetch(`/api/event`, {
         method: "POST",
         body: JSON.stringify({
             venue,
@@ -248,8 +257,8 @@ async function postArtsValues(data) {
         }),
         headers: { 'Content-Type': 'application/json' },
     })
-    if (postResponse.ok) {
-    } else {
-        alert('Error');
-    }
+    // if (postResponse.ok) {
+    // } else {
+    //     alert('Error');
+    // }
 }

@@ -2,58 +2,80 @@
 
 
 {{!-- This will go to the Results page --}}
-    <!--Search Bar-->
-    <div class="container">
-        <nav class="navbar navbar-light bg-light">
-            <form class="container-fluid">
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">&#128269;</span>
-                    <input type="text" class="form-control" placeholder="Event, artist or team"
-                        aria-label="Event, artist or team" aria-describedby="basic-addon1">
-                </div>
-            </form>
-        </nav>
+<!--Search Bar-->
+<div class="container">
+    <nav class="navbar navbar-light bg-light">
+        <form class="container-fluid">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">&#128269;</span>
+                <input type="text" class="form-control" placeholder="Event, artist or team"
+                    aria-label="Event, artist or team" aria-describedby="basic-addon1">
+            </div>
+        </form>
+    </nav>
+</div>
+
+
+{{!-- All the rows are added to results page --}}
+<main>
+    <!--Row 1-->
+    <h3>Sports</h3>
+    <div class="container" id="sports">
+        <a href="/detailResult.handlebars">
+            <figure>
+                <img id="sports1" class="rounded" src="images/ticket-scalper.png" alt="Event Info" width="275"
+                    height="200">
+                <figcaption id="sports1Cap"></figcaption>
+            </figure>
+        </a>
+        <a href="/detailResult.handlebars">
+            <figure>
+                <img id="sports2" class="rounded" src="images/ticket-scalper.png" alt="Event Info" width="275"
+                    height="200">
+                    <figcaption id="sports2Cap" ></figcaption>
+            </figure>
+        </a>
+        <a href="/detailResult.handlebars"><img id="sports3" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
+        <a href="/detailResult.handlebars"><img id="sports4" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
+
     </div>
 
+    <!--Row 2-->
+    <h3>Music</h3>
 
-    {{!-- All the rows are added to results page --}}
-    <main>
-        <!--Row 1-->
-        <h3>Sports</h3>
-        <div class="container" id="sports" >
-            <a href="/detailResult.handlebars"><img id="sports1" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-            <a href="/detailResult.handlebars"><img id="sports2" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-            <a href="/detailResult.handlebars"><img id="sports3" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-            <a href="/detailResult.handlebars"><img id="sports4" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-           
-        </div>
+    <div class="container" id="music">
+        <a href="/detailResult.handlebars"><img id="music1" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
+        <a href="/detailResult.handlebars"><img id="music2" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
+        <a href="/detailResult.handlebars"><img id="music3" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
+        <a href="/detailResult.handlebars"><img id="music4" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
 
-        <!--Row 2-->
-        <h3>Music</h3>
+    </div>
+    <!--Row 3-->
+    <h3>Arts & Theater</h3>
 
-        <div class="container" id="music">
-            <a href="/detailResult.handlebars"><img id="music1" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-            <a href="/detailResult.handlebars"><img id="music2" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-            <a href="/detailResult.handlebars"><img id="music3" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-            <a href="/detailResult.handlebars"><img id="music4" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
+    <div id="arts" class="container">
+        <a href="/detailResult.handlebars"><img id="arts1" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
+        <a href="/detailResult.handlebars"><img id="arts2" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
+        <a href="/detailResult.handlebars"><img id="arts3" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
+        <a href="/detailResult.handlebars"><img id="arts4" class="rounded" src="images/ticket-scalper.png"
+                alt="Event Info" width="275" height="200"></a>
 
-        </div>
-        <!--Row 3-->
-        <h3>Arts & Theater</h3>
+    </div>
 
-        <div id="arts" class="container">
-            <a href="/detailResult.handlebars"><img id="arts1" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200" ></a>
-            <a href="/detailResult.handlebars"><img id="arts2" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-            <a href="/detailResult.handlebars"><img id="arts3" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-            <a href="/detailResult.handlebars"><img id="arts4" class="rounded" src="images/ticket-scalper.png"  alt="Event Info" width="275" height="200"></a>
-
-        </div>
-
-    </main>
+</main>
 
 
-    
-  
+
+
 
 
 
