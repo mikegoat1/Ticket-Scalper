@@ -1,7 +1,11 @@
+// Database fetch calls from User Model
+
 const router = require('express').Router();
 const { User } = require('../../models');
 
 // CREATE new user
+// When Form Sign Up is clicked, this grabs that data and inserts "req" with User model into Database
+// api/users
 router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.create({
@@ -22,6 +26,9 @@ router.post('/', async (req, res) => {
 });
 
 // Login
+// When login form is submitted this gets the info from the form and 
+// trys match the form email with Database email is. 
+// api/users/login
 router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
@@ -37,6 +44,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
+    // using instance from User model to check if info from form input is the same as password connected to email in Database
     const validPassword = await dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -45,7 +53,7 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
-
+    // If email and password is found in Database and are correctly written change the session loggedIn to true 
     req.session.save(() => {
       req.session.loggedIn = true;
 
@@ -60,6 +68,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout
+// api/users/logout
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {

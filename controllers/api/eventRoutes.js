@@ -5,10 +5,14 @@ const { Event } = require('../../models');
 //POST Event Values
 router.post('/', async (req, res) => {
     try {
-      console.log(req.body)
       const eventData = await Event.create({
-        ...req.body,
-        // user_id: req.session.user_id,
+          name: req.body.name, 
+          venue: req.body.venue,
+          price_range_min: req.body.price_range_min, 
+          price_range_max: req.body.price_range_max, 
+          start_date: req.body.start_date, 
+          start_time: req.body.start_time,
+          ticket_link: req.body.ticket_link
       });
   
       res.status(200).json(eventData);

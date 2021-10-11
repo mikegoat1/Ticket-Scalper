@@ -11,6 +11,10 @@ Event.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    name: { 
+      type: DataTypes.STRING,
+      allowNull: false, 
+    }, 
     venue: {
       type: DataTypes.STRING,
       allowNull: false,

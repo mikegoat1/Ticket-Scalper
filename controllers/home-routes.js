@@ -1,6 +1,11 @@
+// Client fetch calls 
+
 const router = require('express').Router();
 const { Event, User } = require('../models');
 const withAuth = require('../utils/auth');
+
+
+
 
 // GET all info from ticketmaster
 router.get('/', async (req, res) => {
