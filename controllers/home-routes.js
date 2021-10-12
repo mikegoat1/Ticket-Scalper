@@ -9,12 +9,14 @@ const withAuth = require('../utils/auth');
 
 // GET all info from ticketmaster
 router.get('/', async (req, res) => {
+  
   try {
     const eventData = await Event.findAll();
+    console.log(eventData)
     const events = eventData.map((event) =>
       event.get({ plain: true })
     );
-
+    console.log(events)
     res.render('homepage', {
       events,
       loggedIn: req.session.loggedIn,
