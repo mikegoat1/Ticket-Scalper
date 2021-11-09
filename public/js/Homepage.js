@@ -21,11 +21,11 @@ function properFormat(data) {
         return data;
     }
 }
-seedEvent();
+renderConcertInfo();
 // Create a function to run and seed Event database with when homepage is rendered. 
-async function seedEvent() {
+async function renderConcertInfo() {
     try {
-        const response = await fetch("https://api.seatgeek.com/2/events?client_id=MjM4Njg3ODF8MTYzMzkxOTAxMy42MDc5MjIz&geoip=true&per_page=50&sort=score.desc",
+        const response = await fetch("https://api.seatgeek.com/2/events?client_id=MjM4Njg3ODF8MTYzMzkxOTAxMy42MDc5MjIz&geoip=true&per_page=10&sort=score.desc",
             {
                 method: "GET",
                 headers: {
@@ -49,21 +49,10 @@ async function seedEvent() {
                     const link = data.events[i].url; 
                     const image = data.events[i].performers[0].image; 
 
-                    const postResponseConcert = await fetch("/api/event", {
-                        method: "POST",
-                        body: JSON.stringify({
-                            name: name, 
-                            venue: venue,
-                            price_range_min: lowCost, 
-                            price_range_max: highCost, 
-                            start_date: startDate, 
-                            start_time: startTime, 
-                            ticket_link: link,
-                            image_url: image,
-                        }),
-                        headers: { 'Content-Type': 'application/json' },
-                    })
-                   
+                    const imageConcert = document.createElement("img"); 
+                    imageConcert.setAttribute("src", image); 
+                    imageConcert.setAttribute("class",`image${[i]}`)
+                    sportsContainer.append(imageConcert)
                 }
 
             }
