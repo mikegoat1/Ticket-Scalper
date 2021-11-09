@@ -25,39 +25,55 @@
 
 <body style="background-color: #white;">
     <!--Nav Bar-->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid" style="background-color: #171717; border-color: #171717;">
-
-            <a href="">
-                <img alt="Logo" src="/images/ticket-scalper.png" width="250" height="150">
+    <nav class="navbar navbar-expand-lg navbar-light navbarColor">
+      <!-- Navbar Container -->
+      <div class="container-fluid d-flex flex-row NavbarContainer">
+        <!-- Navbar row -->
+        <div class="row w-100 d-flex justify-content-around">
+          <!-- Site Image -->
+          <div class="col-lg-2 col-md-2 displayImage">
+            <a class="navbar-brand displayImage" href="#">
+              <img
+                class="displayImage"
+                src="/images/ticket-scalper.png"
+              />
             </a>
-            <img src="https://fontmeme.com/permalink/210628/83f0d30d6a78f62dcfb300879a927465.png" alt="sin-city-font"
-                border="0"></a>
-
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><img
-                            src="https://fontmeme.com/permalink/210628/942350010c4efe2028f22e167965a0c2.png"
-                            alt="sin-city-font" border="0"></a>
-
-                {{#if logged_in}}
-
-               
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><img
-                            src="https://fontmeme.com/permalink/210630/c8cf1c0141c2e35b69db84d853e3d336.png"
-                            alt="sin-city-font" border="0"> </a>
-                </li>
-
-                {{else}}
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><img
-                            src="https://fontmeme.com/permalink/210628/cd9db6503d0fbda57c8592e9238096b4.png"
-                            alt="sin-city-font" border="0"></a>
-                </li>
-                {{/if}}
-            </ul>
+          </div> 
+          <!-- Navbar Main Text -->
+          <div
+            class="col-lg-7 col-md-8 col-sm-9 text-center m-auto navbarMaintext"
+          >
+            <h5>Welcome to Ticket Scalper </h5>
+          </div>
+          <!-- Navbar Links -->
+          <div class="col-lg-3 col-md-2 col-sm-3 d-flex flex-wrap">
+            <button
+              class="navbar-toggler collapseBtn"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav mx-auto">
+                <a
+                  class="nav-link active"
+                  style="color: #ededed"
+                  aria-current="page"
+                  href="#"
+                  >Local</a
+                >
+                <a class="nav-link" style="color: #ededed" href="#">Tickets</a>
+                <a class="nav-link" style="color: #ededed" href="#">Sign-In</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </nav>
 
     {{{ body }}}
