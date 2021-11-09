@@ -28,7 +28,7 @@
 }
 
 #navbarNavAltMarkup {
-    font-family: Poppins;
+    font-family: PT Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -61,19 +61,28 @@
 .event-genre {
     font-size: 36px;
     overflow-wrap: break-word;
-    display: flex; 
-    margin: 5px 20px; 
-    
+    display: flex;
+    margin: 5px 20px;
 }
 
 .event-image {
     box-sizing: border-box;
-    width: 260px; 
-    height: 251px; 
-    background-color: grey; 
-    margin-left: 21px; 
-    margin-top: 20px; 
-    flex-shrink: 0; 
+    width: 260px;
+    height: 251px;
+    background-color: grey;
+    margin-left: 21px;
+    margin-top: 20px;
+    flex-shrink: 0;
+}
+
+.footContainer {
+    bottom: 0;
+    height: 245px;
+    left: 0;
+    position: relative;
+    margin-top: 10%;
+    font-family: PT Sans;
+    background-color: #171717;
 }
 
 @media screen and (max-width: 733px) {
