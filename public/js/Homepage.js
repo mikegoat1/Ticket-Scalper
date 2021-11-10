@@ -6,7 +6,7 @@
 // const musicImage3 = document.querySelector("#music3");
 // const musicImage4 = document.querySelector("#music4");
 //All of Sports 
-const sportsContainer = document.querySelector("#sports");
+const music = document.querySelector("#concerts");
 const sportsImage1 = document.querySelector("#sports1");
 const sportsImage2 = document.querySelector("#sports2");
 const sportsImage3 = document.querySelector("#sports3");
@@ -48,11 +48,12 @@ async function renderConcertInfo() {
                     const startTime = data.events[i].datetime_local; 
                     const link = data.events[i].url; 
                     const image = data.events[i].performers[0].image; 
-
+                    console.log(image)
                     const imageConcert = document.createElement("img"); 
                     imageConcert.setAttribute("src", image); 
-                    imageConcert.setAttribute("class",`image${[i]}`)
-                    sportsContainer.append(imageConcert)
+                    imageConcert.setAttribute("class",`image${[i]}`);
+                    imageConcert.setAttribute("class", "event-image")
+                    music.append(imageConcert)
                 }
 
             }
@@ -87,9 +88,9 @@ async function searchBar(data) {
     }
 };
 
-sportsContainer.addEventListener("click", function (event) {
-    console.log(event.target.value);
-    event.stopPropagation();
+// sportsContainer.addEventListener("click", function (event) {
+//     console.log(event.target.value);
+//     event.stopPropagation();
 
 
-});
+// });
