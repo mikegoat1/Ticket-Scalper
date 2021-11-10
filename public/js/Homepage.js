@@ -7,10 +7,6 @@
 // const musicImage4 = document.querySelector("#music4");
 //All of Sports 
 const music = document.querySelector("#concerts");
-const sportsImage1 = document.querySelector("#sports1");
-const sportsImage2 = document.querySelector("#sports2");
-const sportsImage3 = document.querySelector("#sports3");
-const sportsImage4 = document.querySelector("#sports4");
 
 function properFormat(data) {
     if (data.indexOf(" ") > 0) {
@@ -25,7 +21,7 @@ renderConcertInfo();
 // Create a function to run and seed Event database with when homepage is rendered. 
 async function renderConcertInfo() {
     try {
-        const response = await fetch("https://api.seatgeek.com/2/events?client_id=MjM4Njg3ODF8MTYzMzkxOTAxMy42MDc5MjIz&geoip=true&per_page=10&sort=score.desc",
+        const response = await fetch("https://api.seatgeek.com/2/events?client_id=MjM4Njg3ODF8MTYzMzkxOTAxMy42MDc5MjIz&geoip=true&per_page=50&sort=score.desc",
             {
                 method: "GET",
                 headers: {
@@ -34,6 +30,7 @@ async function renderConcertInfo() {
             })
         if (response.ok) {
             const data = await response.json();
+            console.log(data)
             for (let i = 0; i < data.events.length; i++) {
                 const type = data.events[i].type;
                 if (type === "concert") {
@@ -49,11 +46,45 @@ async function renderConcertInfo() {
                     const link = data.events[i].url; 
                     const image = data.events[i].performers[0].image; 
                     console.log(image)
+
+                    // make sure each card and description has its own row
                     const imageConcert = document.createElement("img"); 
                     imageConcert.setAttribute("src", image); 
-                    imageConcert.setAttribute("class",`image${[i]}`);
-                    imageConcert.setAttribute("class", "event-image")
-                    music.append(imageConcert)
+                    imageConcert.setAttribute("id",`image${[i]}`);
+                    imageConcert.setAttribute("class", "event-image"); 
+                    const container = document.createElement("div"); 
+                    container.setAttribute("class", "d-flex"); 
+                    container.setAttribute("calss", "flex-column"); 
+                    container.setAttribute("class", "justify-content-evenly"); 
+                    container.setAttribute("class", "ms-5"); 
+
+                    const row = document.createElement("div");
+                    row.setAttribute("class", "d-flex"); 
+                    row.setAttribute("class", "flex-row"); 
+                    music.append(row); 
+                    row.append(imageConcert); 
+                    row.append(container); 
+                    
+                    // Creating child elements for container collumn
+                    const title = document.createElement("div"); 
+                    title.innerHTML = name; 
+                    container.appendChild(title); 
+
+                    const venueText = document.createElement("div"); 
+                    venueText.innerHTML = venue; 
+                    container.appendChild(venueText); 
+
+                    const description = document.createElement("p"); 
+                    description.textContent = `Description: This will be the description`; 
+                    container.appendChild(description); 
+
+                    const priceRange = document.createElement("div"); 
+                    priceRange.innerHTML = `Price Range: Lower Tickets: $${lowCost}
+                                                         Higher Tickets: $${highCost}`; 
+                    container.appendChild(priceRange); 
+                                
+
+
                 }
 
             }

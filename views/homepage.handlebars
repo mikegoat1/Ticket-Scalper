@@ -54,21 +54,24 @@
       Music
     </h4>
   </div>
-  <div class="container d-flex" id="concerts" >
-    <img class="event-image">
+  {{!-- So that I dont have to create a attribute for all I should make a custom CSS for this and just add class attribute --}}
+  <div class="container d-flex flex-column" id="concerts" >
+    <div class="row d-flex flex-row" >
+          <img class="event-image w-25">
 
-    </img>
+          </img>
 
-    <div class= "d-flex flex-column justify-content-evenly ms-5">
-<!-- include everything on the right side of image -->
-      <div> Event   dfsf Title</div>
-      <div> Venue </div> 
-      <p class="w-75" > Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ea optio eaque nobis obcaecati. Animi eveniet minima odit consequatur. Illum ea quod sequi sed enim quae adipisci fugit id mollitia?</p>
-      <div> Price Range </div>
-      <div class="d-flex justify-content-evenly">
-      <div>Buy Tickets</div> 
-      <div>Favorites </div> 
-      </div>
+          <div class= "w-50 d-flex flex-column justify-content-evenly ms-2">
+      <!-- include everything on the right side of image -->
+            <div> Event Title  </div>
+            <div> Venue </div> 
+            <p class="w-75" > Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ea optio eaque nobis obcaecati. Animi eveniet minima odit consequatur. Illum ea quod sequi sed enim quae adipisci fugit id mollitia?</p>
+            <div> Price Range </div>
+            <div class="d-flex justify-content-evenly">
+            <div>Buy Tickets</div> 
+            <div>Favorites </div> 
+            </div>
+          </div>
     </div>
 
   </div>
