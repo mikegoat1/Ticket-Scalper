@@ -1,12 +1,6 @@
 //Variables from the the homepage. 
-//All of music variables 
-// const musicContainer = document.querySelector("#music");
-// const musicImage1 = document.querySelector("#music1");
-// const musicImage2 = document.querySelector("#music2");
-// const musicImage3 = document.querySelector("#music3");
-// const musicImage4 = document.querySelector("#music4");
-//All of Sports 
-const music = document.querySelector("#concerts");
+
+var containerMusic = document.querySelector("#concerts");
 
 function properFormat(data) {
     if (data.indexOf(" ") > 0) {
@@ -21,7 +15,7 @@ renderConcertInfo();
 // Create a function to run and seed Event database with when homepage is rendered. 
 async function renderConcertInfo() {
     try {
-        const response = await fetch("https://api.seatgeek.com/2/events?client_id=MjM4Njg3ODF8MTYzMzkxOTAxMy42MDc5MjIz&geoip=true&per_page=50&sort=score.desc",
+        const response = await fetch("https://api.seatgeek.com/2/events?client_id=MjM4Njg3ODF8MTYzMzkxOTAxMy42MDc5MjIz&geoip=true&per_page=10&sort=score.desc",
             {
                 method: "GET",
                 headers: {
@@ -42,48 +36,69 @@ async function renderConcertInfo() {
                     // This endpoint has both time and date
                     // Need to regex the endpoint to seperate into propper property 
                     const startDate = data.events[i].datetime_local;
-                    const startTime = data.events[i].datetime_local; 
-                    const link = data.events[i].url; 
-                    const image = data.events[i].performers[0].image; 
+                    const startTime = data.events[i].datetime_local;
+                    const link = data.events[i].url;
+                    const image = data.events[i].performers[0].image;
+                    const eventDescription = data.events[i].title; 
                     console.log(image)
+                    // Creating Row
+                    const row = document.createElement("div");
+                    row.setAttribute("class", "row");
+                    row.setAttribute("class", "cardRow");
+                    containerMusic.append(row);
+
 
                     // make sure each card and description has its own row
-                    const imageConcert = document.createElement("img"); 
-                    imageConcert.setAttribute("src", image); 
-                    imageConcert.setAttribute("id",`image${[i]}`);
-                    imageConcert.setAttribute("class", "event-image"); 
-                    const container = document.createElement("div"); 
-                    container.setAttribute("class", "d-flex"); 
-                    container.setAttribute("calss", "flex-column"); 
-                    container.setAttribute("class", "justify-content-evenly"); 
-                    container.setAttribute("class", "ms-5"); 
-
-                    const row = document.createElement("div");
-                    row.setAttribute("class", "d-flex"); 
-                    row.setAttribute("class", "flex-row"); 
-                    music.append(row); 
+                    const imageConcert = document.createElement("img");
+                    imageConcert.setAttribute("src", image);
+                    imageConcert.setAttribute("id", `image${[i]}`);
+                    imageConcert.setAttribute("class", "event-image");
+                    imageConcert.setAttribute("class", "cardImage");
                     row.append(imageConcert); 
-                    row.append(container); 
-                    
-                    // Creating child elements for container collumn
-                    const title = document.createElement("div"); 
-                    title.innerHTML = name; 
-                    container.appendChild(title); 
+                    const descriptionContainer = document.createElement("div");
+                    descriptionContainer.setAttribute("class", "cardDescription");
+                    row.append(descriptionContainer);
+                    // Event Artists
+                    const title = document.createElement("div");
+                    title.setAttribute("style", "margin-bottom: 1%"); 
+                    title.innerHTML = name;
+                    descriptionContainer.appendChild(title);
 
-                    const venueText = document.createElement("div"); 
-                    venueText.innerHTML = venue; 
-                    container.appendChild(venueText); 
+                    // Venue Name
+                    const venueText = document.createElement("div");
+                    venueText.innerHTML = venue;
+                    venueText.setAttribute("style", "margin-bottom: 1%"); 
+                    descriptionContainer.appendChild(venueText);
 
-                    const description = document.createElement("p"); 
-                    description.textContent = `Description: This will be the description`; 
-                    container.appendChild(description); 
+                    // Description 
+                    const description = document.createElement("p");
+                    description.setAttribute("class", "cardDescription-p"); 
+                    description.textContent = `Description: ${eventDescription}`;
+                    descriptionContainer.appendChild(description);
 
-                    const priceRange = document.createElement("div"); 
+                    // Prices
+                    const priceRange = document.createElement("div");
+                    priceRange.setAttribute("style", "margin-bottom: 3.5%"); 
                     priceRange.innerHTML = `Price Range: Lower Tickets: $${lowCost}
-                                                         Higher Tickets: $${highCost}`; 
-                    container.appendChild(priceRange); 
-                                
+                                                         Higher Tickets: $${highCost}`;
+                    descriptionContainer.appendChild(priceRange);
+                    
+                    
+                    // Buttons 
+                    const buttonContainer = document.createElement("div"); 
+                    buttonContainer.setAttribute("class", "cardBtnContainer"); 
+                    descriptionContainer.appendChild(buttonContainer); 
 
+
+                    const buttonBuy = document.createElement("div"); 
+                    buttonBuy.setAttribute("class", "buttons"); 
+                    buttonBuy.textContent = "Buy Tickets"; 
+                    buttonContainer.appendChild(buttonBuy); 
+
+                    const buttonFavorites = document.createElement("div"); 
+                    buttonFavorites.setAttribute("class", "buttons"); 
+                    buttonFavorites.textContent = "Favorites"; 
+                    buttonContainer.appendChild(buttonFavorites); 
 
                 }
 
