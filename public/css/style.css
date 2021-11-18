@@ -97,7 +97,7 @@
 .cardRow {
     display: flex;
     flex-direction: row;
-    margin: 5% auto;
+    margin: 5% 6%;
 
 }
 
@@ -117,7 +117,7 @@
 }
 
 .cardDescription-p {
-    width: 80%;
+    width: 82%;
 }
 
 .cardBtnContainer {
