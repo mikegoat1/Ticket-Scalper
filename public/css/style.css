@@ -140,7 +140,13 @@
 
 }
 
-
+/* Login Page */
+#logSignCard {
+    display: flex;
+    justify-content: center;
+    margin: 1rem; 
+    padding: 7rem; 
+}
 
 
 

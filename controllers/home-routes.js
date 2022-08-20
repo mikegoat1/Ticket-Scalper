@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     console.log(events)
     res.render('homepage', {
       events,
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.log(err);
@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 // GET one event
 router.get('/detailResult/:id', async (req, res) => {
   // If the user is not logged in, redirect the user to the login page
-  if (!req.session.loggedIn) {
+  if (!req.session.logged_in) {
     res.redirect('/login');
   } else {
     // If the user is logged in, allow them to view the event
@@ -75,7 +75,7 @@ router.get('/detailResult/:id', async (req, res) => {
 
 //     res.render('detailResult', {
 //       events,
-//       loggedIn: req.session.loggedIn,
+//       logged_in: req.session.logged_in,
 //     });
 //   } catch (err) {
 //     console.log(err);
@@ -137,12 +137,16 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
 
   res.render('login');
 });
+
+router.get("/homepage", (req, res) => {
+  res.render("homepage")
+})
 
 module.exports = router;

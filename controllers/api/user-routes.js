@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     });
 
     req.session.save(() => {
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
       req.session.user_id = dbUserData.id
       res.status(200).json(dbUserData);
     });
@@ -53,9 +53,9 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
-    // If email and password is found in Database and are correctly written change the session loggedIn to true 
+    // If email and password is found in Database and are correctly written change the session logged_in to true 
     req.session.save(() => {
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
 
       res
         .status(200)
@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
 // Logout
 // api/users/logout
 router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });

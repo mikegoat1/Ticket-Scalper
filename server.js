@@ -40,6 +40,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // 
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(compression())
 // Connecting the routes folder to server
 app.use(routes);
@@ -47,6 +48,6 @@ app.use(routes);
 // Force true to drop/recreate tables on evey sync
 // Take off when you dont want it to reload
 sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log('Server listening on: http://localhost:' + PORT));
 });
 

@@ -13,5 +13,12 @@
             "password": "Johnson5",
             "database": "event_db"
         }
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBackground": "#1073cf2d",
+        "editor.lineHighlightBorder": "#9fced11f",
+        "activityBar.background": "#05342E",
+        "titleBar.activeBackground": "#074840",
+        "titleBar.activeForeground": "#ECFDFB"
+    }
 }
