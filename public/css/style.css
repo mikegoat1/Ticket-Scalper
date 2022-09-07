@@ -141,13 +141,30 @@
 }
 
 /* Login Page */
+
+/* Complete Card including both Signup an Login */
 #logSignCard {
     display: flex;
     justify-content: center;
     margin: 1rem; 
     padding: 7rem; 
 }
+ 
+.logSignCardStyle {
+    background-color: #b9bbbc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center; 
+    border-radius: 1em;
+    border: #171717;
 
+}
+/* Login Card */
+#loginCard {
+    /* background-color: #b9bbbc; */
+
+}
 
 
 
