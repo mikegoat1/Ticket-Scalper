@@ -1,48 +1,124 @@
 {{!-- This is a simple login form page/ --}}
 
 {{!-- Login Card --}}
-<div class="row justify-content-center align-content-center" id="logSignCard">
-  <div class="login-card col-6" id="loginCard">
-    <h2 class="page-title">Login</h2>
+<div class="container">
+  <div class="row justify-content-center align-content-center" id="logSignCard">
+    <div class="login-card col-5" id="loginCard">
+      <h2 class="page-title">Login</h2>
 
-    <form class="form login-form logSignCardStyle">
-      <div class="form-group">
-        <label for="email-login">Email:</label>
-        <input class="form-input mb-2 ms-1" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">Password:</label>
-        <input class="form-input mb-2 ms-1" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
+      <form class="form login-form logSignCardStyle">
+        <div class="form-group">
+          <label for="email-login">Email:</label>
+          <input class="form-input mb-2 ms-1" type="text" id="email-login" placeholder="Enter your email" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <div class="error-message" id="email-login-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="password-login">Password:</label>
+          <input class="form-input mb-2 ms-1" type="password" id="password-login" placeholder="Enter your password" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <div class="error-message" id="password-login-error"></div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-sm" type="submit" onmouseover="this.style.backgroundColor='#990000'" onmouseout="this.style.backgroundColor='#FF0000'">login</button>
+          <div class="success-message" id="login-success"></div>
+        </div>
+      </form>
+    </div>
 
-  </div>
-  {{!-- Sign Up Card --}}
-  <div class="login-card col-6" id="signupCard">
-    <h2 class="page-title">Signup</h2>
+    <div class="col-1 d-flex align-items-center justify-content-center">
+      <div class="divider"></div>
+    </div>
 
-    <form class="form signup-form logSignCardStyle">
-      <div class="form-group">
-        <label for="username-signup">Username:</label>
-        <input class="form-input mb-2 ms-1" type="text" id="username-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">Email:</label>
-        <input class="form-input mb-2 ms-1" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">Password:</label>
-        <input class="form-input mb-2 ms-1" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+    <div class="login-card col-5" id="signupCard">
+      <h2 class="page-title">Signup</h2>
 
+      <form class="form signup-form logSignCardStyle">
+        <div class="form-group">
+          <label for="username-signup">Username:</label>
+          <input class="form-input mb-2 ms-1" type="text" id="username-signup" placeholder="Enter your username" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <div class="error-message" id="username-signup-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="email-signup">Email:</label>
+          <input class="form-input mb-2 ms-1" type="text" id="email-signup" placeholder="Enter your email" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <div class="error-message" id="email-signup-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="password-signup">Password:</label>
+          <input class="form-input mb-2 ms-1" type="password" id="password-signup" placeholder="Enter your password" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <div class="error-message" id="password-signup-error"></div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-sm" type="submit" onmouseover="this.style.backgroundColor='#990000'" onmouseout="this.style.backgroundColor='#FF0000'">Sign Up</button>
+          <div class="success-message" id="signup-success"></div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
+<script src="./js/login.js"></script>
+
+<style>
+  body.login-page {
+    background: linear-gradient(to bottom, #333333, #000000);
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .container {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+  body.login-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('path/to/your/grain-texture.png');
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  #loginCard, #signupCard {
+    border: 1px solid rgb(217, 216, 216);
+    border-radius: 5px;
+  }
+
+  .page-title {
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .form {
+    padding: 15px;
+  }
+
+  .form-group label {
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .form-input {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    border: 1px solid #FF0000;
+    border-radius: 5px;
+  }
+
+  .btn-primary {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border-radius: 5px;
+  }
+
+  .divider {
+    width: 1px;
+    height: 100%;
+    background-color: red;
+  }
+</style>
 <script src="./js/login.js"></script>

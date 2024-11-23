@@ -25,6 +25,7 @@ async function renderConcertInfo() {
         if (response.ok) {
             const data = await response.json();
             console.log(data)
+            console.log()
             for (let i = 0; i < data.events.length; i++) {
                 const type = data.events[i].type;
                 if (type === "concert") {
@@ -40,7 +41,6 @@ async function renderConcertInfo() {
                     const link = data.events[i].url;
                     const image = data.events[i].performers[0].image;
                     const eventDescription = data.events[i].title;
-                    console.log(image)
                     // Creating Row
                     const row = document.createElement("div");
                     row.setAttribute("class", "row");

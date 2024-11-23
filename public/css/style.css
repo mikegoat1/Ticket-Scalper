@@ -103,7 +103,7 @@
 
 .cardImage {
     width: 24%;
-    border-radius: 3%; 
+    border-radius: 3%;
     box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
 
 }
@@ -131,7 +131,7 @@
     color: #fff;
     background-color: #5c636a;
     border-color: #565e64;
-    padding: 1% 1.5%; 
+    padding: 1% 1.5%;
     font-weight: 400;
     line-height: 1.5;
     text-align: center;
@@ -146,20 +146,42 @@
 #logSignCard {
     display: flex;
     justify-content: center;
-    margin: 1rem; 
-    padding: 7rem; 
+    margin: 1rem;
+    padding: 7rem;
 }
- 
+
 .logSignCardStyle {
     background-color: #b9bbbc;
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: center; 
+    align-content: center;
     border-radius: 1em;
     border: #171717;
 
 }
+
+.page-title {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 2em;
+    text-shadow: 1px 1px 2px #FF0000;
+    border-bottom: 2px solid #FF0000;
+    padding-bottom: 5px;
+}
+
+.error-message {
+    color: #FF0000;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.success-message {
+    color: #00FF00;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
 /* Login Card */
 #loginCard {
     /* background-color: #b9bbbc; */
