@@ -9,16 +9,19 @@
       <form class="form login-form logSignCardStyle">
         <div class="form-group">
           <label for="email-login">Email:</label>
-          <input class="form-input mb-2 ms-1" type="text" id="email-login" placeholder="Enter your email" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <input class="form-input mb-2 ms-1" type="text" id="email-login" placeholder="Enter your email"
+            onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
           <div class="error-message" id="email-login-error"></div>
         </div>
         <div class="form-group">
           <label for="password-login">Password:</label>
-          <input class="form-input mb-2 ms-1" type="password" id="password-login" placeholder="Enter your password" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <input class="form-input mb-2 ms-1" type="password" id="password-login" placeholder="Enter your password"
+            onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
           <div class="error-message" id="password-login-error"></div>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-sm" type="submit" onmouseover="this.style.backgroundColor='#990000'" onmouseout="this.style.backgroundColor='#FF0000'">login</button>
+          <button class="btn btn-primary btn-sm" type="submit" onmouseover="this.style.backgroundColor='#990000'"
+            onmouseout="this.style.backgroundColor='#FF0000'">login</button>
           <div class="success-message" id="login-success"></div>
         </div>
       </form>
@@ -34,21 +37,25 @@
       <form class="form signup-form logSignCardStyle">
         <div class="form-group">
           <label for="username-signup">Username:</label>
-          <input class="form-input mb-2 ms-1" type="text" id="username-signup" placeholder="Enter your username" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <input class="form-input mb-2 ms-1" type="text" id="username-signup" placeholder="Enter your username"
+            onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
           <div class="error-message" id="username-signup-error"></div>
         </div>
         <div class="form-group">
           <label for="email-signup">Email:</label>
-          <input class="form-input mb-2 ms-1" type="text" id="email-signup" placeholder="Enter your email" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <input class="form-input mb-2 ms-1" type="text" id="email-signup" placeholder="Enter your email"
+            onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
           <div class="error-message" id="email-signup-error"></div>
         </div>
         <div class="form-group">
           <label for="password-signup">Password:</label>
-          <input class="form-input mb-2 ms-1" type="password" id="password-signup" placeholder="Enter your password" onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
+          <input class="form-input mb-2 ms-1" type="password" id="password-signup" placeholder="Enter your password"
+            onfocus="this.style.borderColor='#FF0000'" onblur="this.style.borderColor='#FF0000'" />
           <div class="error-message" id="password-signup-error"></div>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-sm" type="submit" onmouseover="this.style.backgroundColor='#990000'" onmouseout="this.style.backgroundColor='#FF0000'">Sign Up</button>
+          <button class="btn btn-primary btn-sm" type="submit" onmouseover="this.style.backgroundColor='#990000'"
+            onmouseout="this.style.backgroundColor='#FF0000'">Sign Up</button>
           <div class="success-message" id="signup-success"></div>
         </div>
       </form>
@@ -83,7 +90,8 @@
     pointer-events: none;
   }
 
-  #loginCard, #signupCard {
+  #loginCard,
+  #signupCard {
     border: 1px solid rgb(217, 216, 216);
     border-radius: 5px;
   }
@@ -107,18 +115,51 @@
     color: #FFFFFF;
     border: 1px solid #FF0000;
     border-radius: 5px;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus {
+    border-color: #FF0000;
+    outline: none;
   }
 
   .btn-primary {
     background-color: #FF0000;
     color: #FFFFFF;
     border-radius: 5px;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover {
+    background-color: #990000;
+    transform: scale(1.05);
   }
 
   .divider {
     width: 1px;
     height: 100%;
     background-color: red;
+  }
+
+  .error-message,
+  .success-message {
+    font-size: 0.9em;
+    margin-top: 5px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .error-message {
+    color: #FF0000;
+  }
+
+  .success-message {
+    color: #00FF00;
+  }
+
+  .error-message.visible,
+  .success-message.visible {
+    opacity: 1;
   }
 </style>
 <script src="./js/login.js"></script>
