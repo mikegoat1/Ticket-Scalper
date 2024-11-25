@@ -85,48 +85,102 @@
     background-color: #171717;
 }
 
-
-
 .cardContainer {
-
     display: flex;
-    flex-direction: column;
-
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .cardRow {
+    background-color: #1A1A1A;
+    border: 1px solid #FF0000;
+    box-shadow: 0 4px 8px rgba(153, 0, 0, 0.5);
+    padding: 20px;
+    margin: 20px 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 calc(33.333% - 40px); /* Adjust the width of the cards */
+    box-sizing: border-box;
     display: flex;
-    flex-direction: row;
-    margin: 5% 6%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.cardRow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(153, 0, 0, 0.7);
 }
 
 .cardImage {
-    width: 24%;
-    border-radius: 3%;
-    box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #FF0000;
+    filter: grayscale(100%);
+    transition: filter 0.3s, transform 0.3s;
+    margin: 2%;
+    max-width: 100%;
+    height: auto;
+    align-self: center;
+}
 
+.cardImage:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
 .cardDescription {
-    width: 68%;
+    color: #CCCCCC;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    margin-left: 4%;
+    align-items: center;
+    text-align: center;
 }
 
-.cardDescription-p {
-    width: 82%;
+.cardDescription h3 {
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.cardDescription p {
+    color: #CCCCCC;
+}
+
+.cardDescription .priceRange {
+    color: #FF0000;
 }
 
 .cardBtnContainer {
     display: flex;
-    justify-content: space-evenly;
-
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.buttons {
+.cardBtnContainer .buttons {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    /* margin: 5px; */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.cardBtnContainer .buttons:hover {
+    background-color: #000000;
+    color: #FF0000;
+    box-shadow: 0 0 10px #FF0000;
+}
+
+.cardBtnContainer .buttons .icon {
+    margin-right: 5px;
+}
+
+/* .buttons {
     border-radius: 5px;
     color: #fff;
     background-color: #5c636a;
@@ -138,7 +192,7 @@
     text-decoration: none;
 
 
-}
+} */
 
 /* Login Page */
 

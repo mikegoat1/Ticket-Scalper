@@ -24,20 +24,17 @@ async function renderConcertInfo() {
             })
         if (response.ok) {
             const data = await response.json();
-            console.log(data)
-            console.log()
+
             for (let i = 0; i < data.events.length; i++) {
                 const type = data.events[i].type;
                 if (type === "concert") {
-
+                    console.log(data);
                     const name = data.events[i].performers[0].name;
                     const venue = data.events[i].venue.name;
-                    const lowCost = data.events[i].stats.lowest_price_good_deals;
-                    const highCost = data.events[i].stats.highest_price;
-                    // This endpoint has both time and date
-                    // Need to regex the endpoint to seperate into propper property 
-                    const startDate = data.events[i].datetime_local;
+                    const startDate = new Date(data.events[i].datetime_local).toLocaleDateString('en-US');
                     const startTime = data.events[i].datetime_local;
+                    const timeOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
+                    const formattedTime = new Date(startTime).toLocaleTimeString('en-US', timeOptions);
                     const link = data.events[i].url;
                     const image = data.events[i].performers[0].image;
                     const eventDescription = data.events[i].title;
@@ -76,15 +73,18 @@ async function renderConcertInfo() {
                     description.textContent = `Description: ${eventDescription}`;
                     descriptionContainer.appendChild(description);
 
-                    // Prices
-                    const priceRange = document.createElement("div");
-                    priceRange.setAttribute("style", "margin-bottom: 3.5%");
-                    priceRange.innerHTML = `Price Range: Lower Tickets: $${lowCost}
-                                                         Higher Tickets: $${highCost}`;
-                    descriptionContainer.appendChild(priceRange);
+                    // Date
+                    const date = document.createElement("div");
+                    date.innerHTML = `Date: ${startDate}`;
+                    descriptionContainer.appendChild(date);
+
+                    // Time
+                    const time = document.createElement("div");
+                    time.innerHTML = `Time: ${formattedTime}`;
+                    descriptionContainer.appendChild(time);
 
 
-                    // Buttons 
+                    // Buttons
                     const buttonContainer = document.createElement("div");
                     buttonContainer.setAttribute("class", "cardBtnContainer");
                     descriptionContainer.appendChild(buttonContainer);
@@ -93,11 +93,16 @@ async function renderConcertInfo() {
                     const buttonBuy = document.createElement("div");
                     buttonBuy.setAttribute("class", "buttons");
                     buttonBuy.textContent = "Buy Tickets";
+                    buttonBuy.onclick = function () {
+                        window.location.href = link;
+                    };
                     buttonContainer.appendChild(buttonBuy);
 
                     const buttonFavorites = document.createElement("div");
                     buttonFavorites.setAttribute("class", "buttons");
                     buttonFavorites.textContent = "Favorites";
+                    buttonFavorites.style.backgroundColor = "#FFFFFF";
+                    buttonFavorites.style.color = "#FF0000";
                     buttonContainer.appendChild(buttonFavorites);
 
                 }
