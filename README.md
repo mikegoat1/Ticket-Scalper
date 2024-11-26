@@ -6,11 +6,15 @@ Ticket-Scalper is a ticket search site that aggregates sports, concert, and thea
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [Features](#features)
-- [Liscense](#liscense)
+- [Ticket-Scalper ](#ticket-scalper-)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [Features](#features)
+  - [Liscense](#liscense)
+  - [Figma](#figma)
 
 ## Installation
 
@@ -28,7 +32,12 @@ Randon, Chris, Chad, and Mikey J.
 
 ## Features
 <image src="https://maple-eh-00291.herokuapp.com/images/ticket-scalper.png" >
+
 ## Liscense
 
 This product is license with MIT
 <https://choosealicense.com/licenses/mit/>
+
+## Figma
+
+You can view the design for Ticket-Scalper on Figma: [Ticket-Scalper Design](https://www.figma.com/design/SPuenAlVw9PPCJpEeAYgJo/Ticket-Scalper?node-id=0-1&node-type=canvas&t=nKIClmt1cIZ0hJwS-0)
