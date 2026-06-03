@@ -36,9 +36,14 @@ document
       if (response.ok) {
         document.getElementById('login-success').textContent = 'Login successful!';
         document.getElementById('login-success').classList.add('visible');
+        document.getElementById('login-server-error').classList.remove('visible');
         document.location.replace('/');
       } else {
-        alert('Failed to log in.');
+        const data = await response.json().catch(() => ({}));
+        const msg = data.message || 'Login failed. Please try again.';
+        const errEl = document.getElementById('login-server-error');
+        errEl.textContent = msg;
+        errEl.classList.add('visible');
       }
     }
   });
@@ -91,9 +96,14 @@ document
       if (response.ok) {
         document.getElementById('signup-success').textContent = 'Signup successful!';
         document.getElementById('signup-success').classList.add('visible');
+        document.getElementById('signup-server-error').classList.remove('visible');
         document.location.replace('/');
       } else {
-        alert('Failed to sign up.');
+        const data = await response.json().catch(() => ({}));
+        const msg = data.message || 'Signup failed. Please try again.';
+        const errEl = document.getElementById('signup-server-error');
+        errEl.textContent = msg;
+        errEl.classList.add('visible');
       }
     }
   });

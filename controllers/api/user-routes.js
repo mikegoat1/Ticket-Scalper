@@ -20,8 +20,8 @@ router.post('/', async (req, res) => {
       res.status(200).json(dbUserData);
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    console.error('POST /api/users error:', err);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
@@ -62,8 +62,8 @@ router.post('/login', async (req, res) => {
         .json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    console.error('POST /api/users/login error:', err);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 

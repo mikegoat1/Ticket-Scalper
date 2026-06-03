@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const {Event} = require('../../models');
+const { Event } = require('../../models');
 
-//api/event
-//POST Event Values
+// POST /api/events
 router.post('/', async (req, res) => {
   try {
     const eventData = await Event.create({
@@ -15,27 +14,22 @@ router.post('/', async (req, res) => {
       ticket_link: req.body.ticket_link,
       image_url: req.body.image_url,
     });
-
     res.status(200).json(eventData);
-    console.log(eventData)
   } catch (err) {
-    res.status(400).json(err);
+    console.error('POST /api/events error:', err);
+    res.status(400).json({ message: 'Could not create event' });
   }
 });
 
-//api/event
-//GET Event Values
-
+// GET /api/events
 router.get('/', async (req, res) => {
   try {
-    const eventData = await Event.findAll()
+    const eventData = await Event.findAll();
     res.status(200).json(eventData);
-    console.log(eventData)
   } catch (err) {
-    res.status(400).json(err)
+    console.error('GET /api/events error:', err);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
-
-
 
 module.exports = router;

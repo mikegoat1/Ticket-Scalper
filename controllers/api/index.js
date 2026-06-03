@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-const eventRoutes = require('./eventRoutes')
+const eventRoutes = require('./event-routes');
 const userRoutes = require('./user-routes');
+const proxyRoutes = require('./proxy-routes');
 
-//api/users
 router.use('/users', userRoutes);
-//api/event
-router.use('/event', eventRoutes); 
+router.use('/events', eventRoutes);
+router.use('/proxy', proxyRoutes);
 
 module.exports = router;
