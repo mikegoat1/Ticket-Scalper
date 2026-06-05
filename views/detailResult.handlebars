@@ -1,25 +1,29 @@
-{{!-- This page shows the results and details of one clicked on event. From either the results page or the profile page
---}}
-
-
-<div class="text-center">
-    
-    <p>Venue</p>
+<main class="container detail-shell">
+  <article class="detail-card">
+    <h1>{{event.name}}</h1>
     <p>{{event.venue}}</p>
-    <p>Price Range Minimum</p>
-    <p>{{event.price_range_min}}</p>
-    <p>Price Range Maximum</p>
-    <p>{{event.price_range_max}}</p>
-    <p>start date</p>
-    <p>{{event.start_date}}</p>
-    <p>Start Time</p>
-    <p>{{event.start_time}}</p>
-    <p>Ticket Links</p>
-    <p>{{event.ticket_link}}</p>
 
-    <p>
-        <button class="btn btn-primary">Add to Profile</button>
-        <button class="btn btn-primary">Delete</button>
-    </p>
-</div>
+    <dl class="row text-white">
+      <dt class="col-sm-3">Start date</dt>
+      <dd class="col-sm-9">{{event.start_date}}</dd>
+      <dt class="col-sm-3">Start time</dt>
+      <dd class="col-sm-9">{{event.start_time}}</dd>
+      <dt class="col-sm-3">Price range</dt>
+      <dd class="col-sm-9">
+        {{#if event.price_range_min}}
+          ${{event.price_range_min}} {{#if event.price_range_max}}- ${{event.price_range_max}}{{/if}}
+        {{else}}
+          Price unavailable
+        {{/if}}
+      </dd>
+    </dl>
 
+    <div class="detail-actions">
+      <a class="btn btn-primary detail-action" href="/profile">Back to Profile</a>
+      <a class="btn btn-light detail-action" href="{{event.ticket_link}}" target="_blank" rel="noopener noreferrer">Buy tickets</a>
+      <button class="btn btn-danger delete-event" data-id="{{event.id}}" type="button">Delete</button>
+    </div>
+  </article>
+</main>
+
+<script src="/js/profile.js"></script>

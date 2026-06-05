@@ -1,17 +1,46 @@
-{{!-- If there is an event load them in all or one on the page --}}
-{{#if events.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current events:</h3>
-
-    {{#each events as |event|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/detailResult/{{event.id}}">{{event.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{event.id}}">DELETE</button>
-      </div>
+<main class="container profile-shell">
+  <header class="profile-header">
+    <div>
+      <h1>Saved events</h1>
+      <p>Track events you care about, set a target price, and keep the best ticket links close.</p>
     </div>
-    {{/each}}
-  </div>
+    <a class="profile-link" href="/">Find more events</a>
+  </header>
+
+  {{#if events.length}}
+    <section class="saved-events-grid" aria-label="Saved events">
+      {{#each events as |event|}}
+      <article class="saved-event-row" data-id="{{event.id}}" data-current-price="{{event.price_range_min}}">
+        <img class="saved-event-image" src="{{event.image_url}}" alt="{{event.name}}" />
+        <div>
+          <h3><a href="/detailResult/{{event.id}}">{{event.name}}</a></h3>
+          <p class="mb-1">{{event.venue}}</p>
+          <p class="mb-1">{{event.start_date}} at {{event.start_time}}</p>
+          {{#if event.price_range_min}}
+            <p class="priceRange mb-0">Current from ${{event.price_range_min}}</p>
+          {{else}}
+            <p class="priceRange mb-0">Current price unavailable</p>
+          {{/if}}
+        </div>
+        <div class="watch-panel">
+          <span class="watch-badge" data-watch-badge>Set a target</span>
+          <label for="target-price-{{event.id}}">Target price</label>
+          <div class="watch-control">
+            <input id="target-price-{{event.id}}" class="target-price-input" type="number" min="0" step="1" placeholder="250" />
+            <button class="btn btn-sm btn-light watch-save" data-id="{{event.id}}" type="button">Track</button>
+          </div>
+          <button class="btn btn-sm btn-danger delete-event" data-id="{{event.id}}" type="button">Remove</button>
+        </div>
+      </article>
+      {{/each}}
+    </section>
+  {{else}}
+    <section class="empty-state">
+      <h3>No saved events yet</h3>
+      <p>Search events, click Save, and your watchlist will appear here.</p>
+      <a class="btn btn-danger" href="/">Find tickets</a>
+    </section>
   {{/if}}
+</main>
+
+<script src="/js/profile.js"></script>

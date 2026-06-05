@@ -56,6 +56,7 @@ typings/
 
 # Optional eslint cache
 .eslintcache
+.playwright-cli/
 
 # Microbundle cache
 .rpt2_cache/

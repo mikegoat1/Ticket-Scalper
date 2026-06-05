@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
     const events = eventData.map((event) => event.get({ plain: true }));
     res.render('homepage', {
       events,
-      logged_in: req.session.logged_in,
+      is_homepage: true,
+      logged_in: Boolean(req.session.logged_in),
     });
   } catch (err) {
     console.error('GET / error:', err);
@@ -18,19 +19,21 @@ router.get('/', async (req, res) => {
 });
 
 // GET one event detail (requires login)
-router.get('/detailResult/:id', async (req, res) => {
-  if (!req.session.logged_in) {
-    return res.redirect('/login');
-  }
+router.get('/detailResult/:id', withAuth, async (req, res) => {
   try {
-    const eventData = await Event.findByPk(req.params.id);
+    const eventData = await Event.findOne({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
     if (!eventData) {
       return res.status(404).json({ message: 'Event not found' });
     }
     const event = eventData.get({ plain: true });
     res.render('detailResult', {
       event,
-      logged_in: req.session.logged_in,
+      logged_in: true,
     });
   } catch (err) {
     console.error('GET /detailResult/:id error:', err);
@@ -45,6 +48,9 @@ router.get('/profile', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Event }],
     });
+    if (!userData) {
+      return req.session.destroy(() => res.redirect('/login'));
+    }
     const user = userData.get({ plain: true });
     res.render('profile', {
       ...user,
@@ -64,7 +70,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/homepage', (req, res) => {
-  res.render('homepage');
+  res.redirect('/');
 });
 
 module.exports = router;

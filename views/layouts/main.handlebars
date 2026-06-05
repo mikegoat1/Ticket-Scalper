@@ -11,6 +11,7 @@
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <!--personal CSS  -->
   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="/images/ticket-scalper.png" />
 
   <title>Ticket Scalper</title>
 
@@ -25,7 +26,7 @@
       <div class="row w-100 d-flex justify-content-around">
         <!-- Site Image -->
         <div class="col-lg-2 col-md-2 displayImage">
-          <a class="navbar-brand displayImage" href="/homepage">
+          <a class="navbar-brand displayImage" href="/">
             <img class="displayImage" src="/images/ticket-scalper.png" />
           </a>
         </div>
@@ -45,7 +46,7 @@
               <a class="nav-link active" style="color: #ededed" aria-current="page" href="#">Local</a>
               <a class="nav-link" style="color: #ededed" href="#">Tickets</a>
               {{#if logged_in}}
-              {{!-- find a way to make a route to log out using fetch --}}
+              <a class="nav-link" style="color: #ededed" href="/profile">Profile</a>
               <a class="nav-link" style="color: #ededed" href="/" id="logout">Logout</a>
               {{else}}
               <a class="nav-link" style="color: #ededed" href="/login" id="signIn">Sign-In</a>
@@ -61,13 +62,11 @@
   {{{ body }}}
 
 
-
-  {{!-- This needs to be there to toggle which js script is being ran while on site --}}
-
+  {{#if is_homepage}}
+  <script src="/js/Homepage.js"></script>
+  {{/if}}
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
-  {{else}}
-  <script src="/js/Homepage.js"></script>
   {{/if}}
 
 </body>

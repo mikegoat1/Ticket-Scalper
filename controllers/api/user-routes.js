@@ -3,6 +3,12 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+const serializeUser = (userData) => {
+  const user = userData.get({ plain: true });
+  delete user.password;
+  return user;
+};
+
 // CREATE new user
 // When Form Sign Up is clicked, this grabs that data and inserts "req" with User model into Database
 // api/users
@@ -16,8 +22,8 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.logged_in = true;
-      req.session.user_id = dbUserData.id
-      res.status(200).json(dbUserData);
+      req.session.user_id = dbUserData.id;
+      res.status(201).json({ user: serializeUser(dbUserData) });
     });
   } catch (err) {
     console.error('POST /api/users error:', err);
@@ -56,10 +62,11 @@ router.post('/login', async (req, res) => {
     // If email and password is found in Database and are correctly written change the session logged_in to true 
     req.session.save(() => {
       req.session.logged_in = true;
+      req.session.user_id = dbUserData.id;
 
       res
         .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
+        .json({ user: serializeUser(dbUserData), message: 'You are now logged in!' });
     });
   } catch (err) {
     console.error('POST /api/users/login error:', err);
